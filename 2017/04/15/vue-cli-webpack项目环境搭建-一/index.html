@@ -1,0 +1,688 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+    <title>vue-cli+webpack项目环境搭建(一) | Mr.X的博客</title>
+    <meta name="author" content="xiaoli">
+    
+    <meta name="description" content="安装环境1.node.js安装node.js官网下载
+最新的node.js都有自带npm（包管理工具）
+安装完成后，可以在命令行中输入node -v He npm -v,如果能显示出版本号，就说明安装成功了。">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="vue-cli+webpack项目环境搭建(一)"/>
+    <meta property="og:site_name" content="Mr.X"/>
+
+    
+    <meta property="og:image" content="undefined"/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="Mr.X" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/prettify-tomorrow-night-eighties.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+
+<body>
+    <img src="/weixin_favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+    <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">Mr.X</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-reading " href="/reading" >
+                            <i class="fa fa-book "></i>
+                            
+                            读书
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="http://ww2.sinaimg.cn/small/74990035jw1f1rjkd681bj20rs0rsdhg.jpg" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">青椒炒鸡蛋</p>
+                        <p class="desc">Web前端开发菜鸟</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-reading " href="/reading" >
+                    <i class="fa fa-book "></i>
+                    
+                    读书
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/前端/">
+                    前端 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/前端/css/">
+                    css <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Vue/">
+                    Vue <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/Vue/Vue基础/">
+                    Vue基础 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/hexo/">
+                    hexo <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/古诗词/">
+                    古诗词 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+    <main>
+        <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/Vue/">Vue</a><a class="breadcrumb" href="/categories/Vue/Vue基础/">Vue基础</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>vue-cli+webpack项目环境搭建(一)</h1>
+    
+
+
+            </div>
+            <time class="pink-link-context" datetime="2017-04-15T07:33:37.000Z"><a href="/2017/04/15/vue-cli-webpack项目环境搭建-一/">2017-04-15</a></time>
+
+            <span id="busuanzi_container_page_pv" class="read-times-container">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_value_page_pv"></span>
+</span>
+
+            
+    <div class="tags-row">
+        
+            <a href="/tags/Vue/" class="chip pink lighten-1">Vue</a>
+        
+    </div>
+
+
+            <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#安装环境"><span class="section table-of-contents-text">安装环境</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#1-node-js安装"><span class="section table-of-contents-text">1.node.js安装</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#2-安装vue-cli"><span class="section table-of-contents-text">2.安装vue-cli</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#3-创建项目"><span class="section table-of-contents-text">3.创建项目</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#官方模板"><span class="section table-of-contents-text">官方模板</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#目前可供选择的模板："><span class="section table-of-contents-text">目前可供选择的模板：</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#4-生成项目"><span class="section table-of-contents-text">4.生成项目</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#5-打包上线"><span class="section table-of-contents-text">5.打包上线</span></a></li></ol>
+</div>
+
+
+            <div class="entry pink-link-context">
+                <h3 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h3><h3 id="1-node-js安装"><a href="#1-node-js安装" class="headerlink" title="1.node.js安装"></a>1.node.js安装</h3><p><a href="https://nodejs.org/en/download/" target="_blank" rel="external">node.js官网下载</a></p>
+<p>最新的node.js都有自带npm（包管理工具）</p>
+<p>安装完成后，可以在命令行中输入node -v He npm -v,如果能显示出版本号，就说明安装成功了。</p>
+<p><img src="http://oojru7lbc.bkt.clouddn.com/node-npm-version.png" alt=""><br><a id="more"></a></p>
+<p>毕竟npm的服务器在国外，有时候安装依赖的时候可能会很慢很慢，这个时候可以选择安装淘宝镜像来安装我们的依赖，安装命令如下：</p>
+<pre><code>npm install -g cnpm --registry= https://registry.npm.taobao.org
+</code></pre><p>现在就可以使用cnpm来安装我们所需的各种依赖了。</p>
+<h3 id="2-安装vue-cli"><a href="#2-安装vue-cli" class="headerlink" title="2.安装vue-cli"></a>2.安装vue-cli</h3><p>安装好node，我们可以直接全局安装vue-cli：</p>
+<pre><code>npm install -g vue-cli
+</code></pre><p><strong>或者</strong></p>
+<pre><code>cnpm install -g vue-cli
+</code></pre><p><strong>最新的vue项目模板中，都带有webpack插件，所以这里可以不安装webpack，安装完成后，可以使用vue -V(注意V大写)查看是否安装成功。如果提示“无法识别‘vue’”,有可能是npm版本过低，可以使用</strong></p>
+<pre><code>npm install -g npm
+</code></pre><p><strong>更新版本</strong></p>
+<h3 id="3-创建项目"><a href="#3-创建项目" class="headerlink" title="3.创建项目"></a>3.创建项目</h3><p><strong>搭建方式</strong></p>
+<pre><code># 使用vue-cli初始化项目
+vue init webpack my-project
+
+# 进入到目录
+cd my-project
+
+# 安装依赖
+npm install
+
+# 开始运行
+npm run dev
+</code></pre><p><strong>上面的这些命令会从 vuejs-templates 拉取模板并安装，然后用NPM安装依赖，最后你只需要用个NPM脚本启动就能开始开发了</strong></p>
+<h3 id="官方模板"><a href="#官方模板" class="headerlink" title="官方模板"></a>官方模板</h3><p><strong>所有的官方模板都可以在<a href="https://github.com/vuejs-templates" target="_blank" rel="external"> vuejs-templates organization</a>找到。如果有一个新的模板放在了这里，你可以直接就用 vue init <template-name> <project-name> 使用。你也可以运行 vue list 命令来看看现在有哪些官方模板是现在可用的。</project-name></template-name></strong></p>
+<h3 id="目前可供选择的模板："><a href="#目前可供选择的模板：" class="headerlink" title="目前可供选择的模板："></a>目前可供选择的模板：</h3><ul>
+<li>browserify - 拥有高级功能的 Browserify + vueify 用于正式开发。</li>
+<li>browserify-simple - 拥有基础功能的 Browserify + vueify 用于快速原型开发。</li>
+<li>webpack - 拥有高级功能的 Webpack + vue-loader 用于正式开发。</li>
+<li>webpack-simple - 拥有基础功能的 Webpack + vue-loader 用于快速原型开发。</li>
+</ul>
+<h3 id="4-生成项目"><a href="#4-生成项目" class="headerlink" title="4.生成项目"></a>4.生成项目</h3><p><strong>命令vue init webpack my-project执行之后，会在当前目录生成以该名称命名的项目文件夹</strong></p>
+<p><img src="http://oojru7lbc.bkt.clouddn.com/vue-clifiles.png" alt=""></p>
+<p><strong>配置完成后，可以看到目录下多出了一个项目文件夹，里面就是 vue-cli 创建的一个基于 webpack 的 vue.js 项目<br>然后进入项目目录（cd my-project），使用 npm 安装依赖</strong></p>
+<pre><code>npm install
+</code></pre><p><strong>然后启动项目</strong></p>
+<pre><code>npm run dev
+</code></pre><p>如果浏览器打开之后，没有加载出页面，有可能是本地的 8080 端口被占用，需要修改一下配置文件 config&gt;index.js</p>
+<p><img src="http://oojru7lbc.bkt.clouddn.com/vue-clig.png" alt=""></p>
+<p>建议将端口号改为不常用的端口。另外我还将 build 的路径前缀修改为 ‘ ./ ‘（原本为 ‘ / ‘），是因为打包之后，外部引入 js 和 css 文件时，如果路径以 ‘ / ‘ 开头，在本地是无法找到对应文件的（服务器上没问题）。所以如果需要在本地打开打包后的文件，就得修改文件路径。</p>
+<h3 id="5-打包上线"><a href="#5-打包上线" class="headerlink" title="5.打包上线"></a>5.打包上线</h3><p>自己的项目文件都需要放到 src 文件夹下<br>项目开发完成之后，可以输入 npm run build 来进行打包工作 </p>
+<pre><code>npm run build
+</code></pre><p>打包完成后，会生成 dist 文件夹，如果已经修改了文件路径，可以直接打开本地文件查看<br>项目上线时，只需要将 dist 文件夹放到服务器就行了</p>
+
+                
+<p class="pink-link-context">
+    <a href="/2017/04/11/我的第一篇博客/" rel="next" title="我的第一篇博客">
+    上一篇：我的第一篇博客
+  </a>
+</p>
+
+
+
+<p class="pink-link-context">
+    <a href="/2017/04/20/吕蒙正-《破窑赋》/" rel="next" title="吕蒙正-《破窑赋》">
+    下一篇：吕蒙正-《破窑赋》
+  </a>
+</p>
+
+
+            </div>
+			
+        </div>
+    </div>
+</article>
+
+
+
+
+    <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href,
+        sourceId: "",
+        productKey: "true",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+
+
+
+</div>
+
+        <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+    </main>
+    <footer class="page-footer indigo darken-1">
+    
+    <div class="footer-container container">
+        <div class="row">
+            
+            <div class="social-group col m4 s12">
+                <h5 class="white-text">社交</h5>
+                
+                    <a class="social-link" href="http://weibo.com/2728545850" target="_blank">
+                        <i class="fa fa-2x fa-weibo"></i>
+                    </a>
+                
+                    <a class="social-link" href="https://github.com/pigiszhu" target="_blank">
+                        <i class="fa fa-2x fa-github"></i>
+                    </a>
+                
+                    <a class="social-link" href="/atom.xml" target="_blank">
+                        <i class="fa fa-2x fa-rss"></i>
+                    </a>
+                
+                
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    </script>
+    <div class="site-visitors-container white-text">
+        <span>
+            <i class="fa fa-user"></i>
+            <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+        </span>
+        <span>&nbsp;|&nbsp;</span>
+        <span>
+            <i class="fa fa-eye"></i>
+            <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+        </span>
+    </div>
+
+
+            </div>
+            
+
+            
+            <div class="col m8 s12">
+                <h5 class="white-text">友情链接</h5>
+                
+                    <a class="social-link" href="http://raytaylorlin.com/" target="_blank">raytaylorism主题作者的技术博客</a>
+                
+                    <a class="social-link" href="https://github.com/raytaylorlin" target="_blank">Github地址（测试友情链接）</a>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+
+    <div class="footer-copyright pink-link-context">
+        <div class="container">
+            © 2016 xiaoli1992.cn, All rights reserved.
+            <p class="right" style="margin-top: 0;">本博客由 <a href="https://hexo.io">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a></p>
+        </div>
+    </div>
+</footer>
+
+
+    <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+            // 添加new标签
+            $('.menu-reading, .menu-about').append('<span class="new badge pink"></span>');
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" async
+  src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+</body>
+</html>
