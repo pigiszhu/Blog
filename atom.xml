@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.xiaoli1992.cn/"/>
-  <updated>2018-01-22T08:58:10.740Z</updated>
+  <updated>2018-01-27T16:15:24.789Z</updated>
   <id>http://www.xiaoli1992.cn/</id>
   
   <author>
@@ -15,6 +15,77 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>js数组去重的几种方法</title>
+    <link href="http://www.xiaoli1992.cn/2018/01/27/js%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95/"/>
+    <id>http://www.xiaoli1992.cn/2018/01/27/js数组去重的几种方法/</id>
+    <published>2018-01-27T12:12:44.000Z</published>
+    <updated>2018-01-27T16:15:24.789Z</updated>
+    
+    <content type="html"><![CDATA[<p>在工作中经常后台返回的数据，用户的输入==，都会有重复的数据的可能，所以，处理重复的数据是不可避免的，就总结一下数组的几种常见的去重方法</p><h4 id="1-简单的去重方法"><a href="#1-简单的去重方法" class="headerlink" title="1.简单的去重方法"></a>1.简单的去重方法</h4><p>最简单的数组去重法<br>新建一新数组，遍历传入数组，值不在新数组就push进该数组中<br>IE8以下不支持数组的indexOf方法</p><pre><code>function uniq(array){    var temp = [];//一个新的临时数组    for(var i = 0; i &lt; array.length; i++){        if(temp.indexOf(array[i] == -1)){            temp.push(array[i]);        }    }    return temp;}var aa = [1,2,2,3,4,3,4,5,6,7,8];console.log(uniq(aa));</code></pre><a id="more"></a><h4 id="2-对象键值法去重"><a href="#2-对象键值法去重" class="headerlink" title="2.对象键值法去重"></a>2.对象键值法去重</h4><p>速度最快，占空间最多（空间换时间）<br>该方法执行的速度比其他任何方法都快，就是占用的内存大一些。</p><p>思路：新建一js对象以及新数组，遍历传入数组时，判断值是否为js对象的键，不是的话给对象新增该键并放入数组。</p><p>注意点：判断是否为js对象键时，会自动对传入的键执行”toString()”,</p><p>不同的键可能会误认为一样，例如n[val] – n[1]、n[“1”];</p><p>解决上述问题还是得调用”indexOf”。</p><pre><code>function uniq(array){    var temp = {},r = [], len = array.length,val,type;    for(var i = 0; i &lt; len; i++){        var array[i];        type = typeof val;        if(!temp[val]){            temp[val] = [type];            r.push(val);        }else if(temp[val].indexOf(type) &lt; 0){            temp[val].push(type);            r.push(val);        }    }    return r;}var aa = [1,2,3,&quot;3&quot;,4,9,&quot;a&quot;,3,5];console.log(uniq(aa));</code></pre><h4 id="3-排序后相邻去除法"><a href="#3-排序后相邻去除法" class="headerlink" title="3.排序后相邻去除法"></a>3.排序后相邻去除法</h4><p>给传入数组排序，排序后相同值相邻，</p><p>然后遍历时，新数组只加入不与前一值重复的值。</p><p>会打乱原来数组的顺序</p><pre><code>function uniq(array){    array.sort();    var temp = [array[0]];    for(var i = 0; i &lt; array.length; i++){        if(array[i] !== temp[temp.length-1]){            temp.push(array[i]);        }    }    return temp;}var aa = [1,2,&quot;2&quot;,4,9,&quot;a&quot;,2,3,5,6];console.log(uniq(aa));</code></pre><h4 id="4-数组下标法"><a href="#4-数组下标法" class="headerlink" title="4.数组下标法"></a>4.数组下标法</h4><p>还是得调用”indexOf”性能跟方法1差不多，</p><p>实现思路：如果当前数组的第i项在当前数组中第一次出现的位置不是i,</p><p>那么表示第i项是重复的，忽略掉。否则存入结果数组。</p><pre><code>function uniq(array){    var temp = [];    for(var i = 0;i &lt; array.length;i++){        //如果当前数组的第i项在当前数组中第一次出现的位置是i,才存入数组，否则代表是重复的        if(array.indexOf(array[i] == i)){            temp.push(array[i]);        }    }    return temp;}var aa = [1,2,&quot;2&quot;,4,9,&quot;a&quot;,&quot;a&quot;,2,3,5,6,5];console.log(uniq(aa));</code></pre><h4 id="5-优化遍历数组法"><a href="#5-优化遍历数组法" class="headerlink" title="5.优化遍历数组法"></a>5.优化遍历数组法</h4><p>思路：获取没重复的最右一值放入新数组<br>（检测到有重复值时终止当前循环同时进入顶层循环的下一轮判断）</p><pre><code>function uniq(array){    var temp = [],index = [];    var l = array.length;    for(var i = 0;i &lt; l;i++){        for(var j = i+1; j &lt; l;j++){            if(array[i] === array[j]){                i++;                j = i;            }        }        temp.push(array[i]);        index.push(i);    }    console.log(index);    return temp;}var aa = [1,2,2,3,5,3,6,5];console.log(uniq(aa));</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在工作中经常后台返回的数据，用户的输入==，都会有重复的数据的可能，所以，处理重复的数据是不可避免的，就总结一下数组的几种常见的去重方法&lt;/p&gt;
+&lt;h4 id=&quot;1-简单的去重方法&quot;&gt;&lt;a href=&quot;#1-简单的去重方法&quot; class=&quot;headerlink&quot; title=&quot;1.简单的去重方法&quot;&gt;&lt;/a&gt;1.简单的去重方法&lt;/h4&gt;&lt;p&gt;最简单的数组去重法&lt;br&gt;新建一新数组，遍历传入数组，值不在新数组就push进该数组中&lt;br&gt;IE8以下不支持数组的indexOf方法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function uniq(array){
+    var temp = [];//一个新的临时数组
+    for(var i = 0; i &amp;lt; array.length; i++){
+        if(temp.indexOf(array[i] == -1)){
+            temp.push(array[i]);
+        }
+    }
+    return temp;
+}
+var aa = [1,2,2,3,4,3,4,5,6,7,8];
+console.log(uniq(aa));
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://www.xiaoli1992.cn/categories/JavaScript/"/>
+    
+      <category term="数组" scheme="http://www.xiaoli1992.cn/categories/JavaScript/%E6%95%B0%E7%BB%84/"/>
+    
+    
+      <category term="JavaScript" scheme="http://www.xiaoli1992.cn/tags/JavaScript/"/>
+    
+      <category term="数组" scheme="http://www.xiaoli1992.cn/tags/%E6%95%B0%E7%BB%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>js数组的一些基本操作</title>
+    <link href="http://www.xiaoli1992.cn/2018/01/25/js%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/"/>
+    <id>http://www.xiaoli1992.cn/2018/01/25/js数组的一些基本操作/</id>
+    <published>2018-01-25T08:25:31.000Z</published>
+    <updated>2018-01-26T12:20:37.062Z</updated>
+    
+    <content type="html"><![CDATA[<p>这几天因为工作上做的一些功能中需要大量的用到数组，对数组的各种操作，度娘了很多，基本上是需要用到什么就度娘什么，整理一下数组的知识，以后就不用总是去百度啦！</p><h3 id="创建数组的几种方式"><a href="#创建数组的几种方式" class="headerlink" title="创建数组的几种方式"></a>创建数组的几种方式</h3><h4 id="1、直接量创建"><a href="#1、直接量创建" class="headerlink" title="1、直接量创建"></a>1、直接量创建</h4><pre><code>var array = [];//创建一个空数组var array = [1,2,3];//创建一个有三个元素的数组</code></pre><h4 id="2、构造函数创建"><a href="#2、构造函数创建" class="headerlink" title="2、构造函数创建"></a>2、构造函数创建</h4><pre><code>var array = new Array();//创建空数组var array = new Array(10);//创建一个长度为10的数组var array = new Array(5,4,3,2,1)//创建数组并初始化</code></pre><a id="more"></a><h3 id="取值、赋值"><a href="#取值、赋值" class="headerlink" title="取值、赋值"></a>取值、赋值</h3><pre><code>var item = array[index];//获取指定元素的值array[index] = value; //为指定元素赋值</code></pre><h3 id="添加新元素"><a href="#添加新元素" class="headerlink" title="添加新元素"></a>添加新元素</h3><pre><code>array.push(item1,item2,...,itemN);//向数组的末尾添加一个或多个元素，并返回新数组的长度array.unshift(item1,item2,...,itemN);//向数组的开头添加一个或多个元素，并返回新的长度array.splice(index,howmany,item1,item2……itemN);//向/从数组中添加/添加项目，然后返回被删除的项目。//注释:该方法会改变原始数组index:必需。整数，规定添加/删除项目的位置，使用负数可从数组结尾处规定位置howmany:必需。要删除的项目数组。如果设置为0，则不会删除项目。item1,item2……itemN 可选。向数组添加的新项目</code></pre><h3 id="删除元素"><a href="#删除元素" class="headerlink" title="删除元素"></a>删除元素</h3><pre><code>array.pop();//删除最后一个元素，并返回该元素array.shift();//删除第一个元素，数组元素位置自动迁移，返回被删除的元素array.splice(start,delCount);//从start的位置开始向后删除delCount个元素</code></pre><h4 id="根据指定下标删除数组元素"><a href="#根据指定下标删除数组元素" class="headerlink" title="根据指定下标删除数组元素"></a>根据指定下标删除数组元素</h4><p>列了这么都就是没有发现删除数组元素的方法！于是查了一些资料找到了解决方法。<br>删除数组元素需要扩展Array原型prototype<br>将一下代码放在全局js文件中</p><pre><code>Array.prototype.remove=function(obj){    for(var i = 0;i &lt; this.length;i++){        var temp = this[i];        if(!isNaN(obj)){            temp=i;        }        if(temp == obj){            for(var j = i;j &lt;this.length;j++){                this[j]=this[j+1];            }            this.length = this.length-1;        }    }}使用方法var arr =new Array();arr[0]=&quot;dddddd&quot;;arr[1]=&quot;dxxxxxxx&quot;;arr[2]=&quot;vvvvvvv&quot;;arr[3]=&quot;dbbbbb&quot;;var str =&quot;vvvvvvv&quot;;arr.remove(3);//删除下标为3的对象arr.remove(str);//删除对象值为“vvvvvvv”</code></pre><h3 id="数组的合并、截取"><a href="#数组的合并、截取" class="headerlink" title="数组的合并、截取"></a>数组的合并、截取</h3><pre><code>array.slice(start,end)//从已有的数组中返回选定的元素所组成的一个新数组，包含startdao end(不包括该元素)start:必需。规定从start开始选取。如果是负数，那么它规定从数组尾部开始算起的位置。-1指最后一个元素，以此类推。end:可选。规定从何处结束选取。该参数是数组片断结束处的数组下标。如果没有指定该参数，那么切分的数组包含从 start 到数组结束的所有元素。如果这个参数是负数，那么它规定的是从数组尾部开始算起的元素。array.concat(array1,array2);//用于连接两个或多个数组该方法不会改变现有的数组，返回一个新的数组。</code></pre><h3 id="数组的排序"><a href="#数组的排序" class="headerlink" title="数组的排序"></a>数组的排序</h3><pre><code>array.reverse();//数组反转array.sort();//数组排序，返回数组地址</code></pre><h3 id="数组转字符串"><a href="#数组转字符串" class="headerlink" title="数组转字符串"></a>数组转字符串</h3><h4 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h4><pre><code>var a,,c;a = new Array(a,b,c,d,e);b = a.join(&apos;-&apos;);//a-b-c-d-e 使用-拼接数组元素c = a.join(&apos;&apos;);//abcde</code></pre><h4 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h4><pre><code>var arr = new Array(3)arr[0] = &quot;George&quot;arr[1] = &quot;John&quot;arr[2] = &quot;Thomas&quot;document.write(arr.toString())输出：George,John,Thomas</code></pre><h3 id="字符串转数组"><a href="#字符串转数组" class="headerlink" title="字符串转数组"></a>字符串转数组</h3><pre><code>使用split()方法用于把一个字符串分割成字符串数组语法：stringObject.split(separator,howmany)separator：必需。字符串或正则表达式，从该参数指定的地方分割 stringObject。howmany：可选。该参数可指定返回的数组的最大长度。如果设置了该参数，返回的子串不会多于这个参数指定的数组。如果没有设置该参数，整个字符串都会被分割，不考虑它的长度。例子1：var str=&quot;How are you doing today?&quot;document.write(str.split(&quot; &quot;) + &quot;&lt;br /&gt;&quot;)document.write(str.split(&quot;&quot;) + &quot;&lt;br /&gt;&quot;)document.write(str.split(&quot; &quot;,3))输出：How,are,you,doing,today?H,o,w, ,a,r,e, ,y,o,u, ,d,o,i,n,g, ,t,o,d,a,y,?How,are,you也可以使用正则表达式作为 separatorvar words = sentence.split(/\s+/)</code></pre><h3 id="清空数组的三种方法"><a href="#清空数组的三种方法" class="headerlink" title="清空数组的三种方法"></a>清空数组的三种方法</h3><h4 id="方法1：splice方法"><a href="#方法1：splice方法" class="headerlink" title="方法1：splice方法"></a>方法1：splice方法</h4><p>splice()方法用于插入、删除或替换数组的元素。</p><pre><code>var arr = [1, 2, 3, 4];arr.splice(2,1,&quot;Lemon&quot;,&quot;Kiwi&quot;);//第一个参数为删除和添加数组的起始位置，//第二个参数为删除多少个元素，//第三个参数为添加新的元素console.log(arr)//输出1,2,Lemon,Kiwi,4</code></pre><p>所以清空数组相当于删除数组中的所有元素</p><pre><code>var arr = [1, 2, 3, 4];arr.splice(0, arr.length);console.log(arr);//输出[]，空数组</code></pre><h4 id="方法2：赋值length为0"><a href="#方法2：赋值length为0" class="headerlink" title="方法2：赋值length为0"></a>方法2：赋值length为0</h4><p>javascript中数组的length和其他的语言的数组中length不同，js中数组length可以自己设置大小，意思是可读可写的，但其他语言如java,c++中都是不能进行修改，只读形式存在。<br>如java中对数组length赋值将报错</p><p>但在js中则可以修改，这样就达到了清空数组的目的</p><pre><code>var arr = [1, 2, 3, 4];arr.length = 0;console.log(arr);//输出[]，空数组</code></pre><h4 id="方法三：数组赋值"><a href="#方法三：数组赋值" class="headerlink" title="方法三：数组赋值[]"></a>方法三：数组赋值[]</h4><pre><code>var arr = [1, 2, 3, 4]; arr = [];这里其实并不能说是严格意义的清空数组，只是将arr重新赋值为空数组之前的数组如果没有引用在指向它将等待垃圾回收。</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这几天因为工作上做的一些功能中需要大量的用到数组，对数组的各种操作，度娘了很多，基本上是需要用到什么就度娘什么，整理一下数组的知识，以后就不用总是去百度啦！&lt;/p&gt;
+&lt;h3 id=&quot;创建数组的几种方式&quot;&gt;&lt;a href=&quot;#创建数组的几种方式&quot; class=&quot;headerlink&quot; title=&quot;创建数组的几种方式&quot;&gt;&lt;/a&gt;创建数组的几种方式&lt;/h3&gt;&lt;h4 id=&quot;1、直接量创建&quot;&gt;&lt;a href=&quot;#1、直接量创建&quot; class=&quot;headerlink&quot; title=&quot;1、直接量创建&quot;&gt;&lt;/a&gt;1、直接量创建&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;var array = [];//创建一个空数组
+var array = [1,2,3];//创建一个有三个元素的数组
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;2、构造函数创建&quot;&gt;&lt;a href=&quot;#2、构造函数创建&quot; class=&quot;headerlink&quot; title=&quot;2、构造函数创建&quot;&gt;&lt;/a&gt;2、构造函数创建&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;var array = new Array();//创建空数组
+var array = new Array(10);//创建一个长度为10的数组
+var array = new Array(5,4,3,2,1)//创建数组并初始化
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://www.xiaoli1992.cn/categories/JavaScript/"/>
+    
+      <category term="数组" scheme="http://www.xiaoli1992.cn/categories/JavaScript/%E6%95%B0%E7%BB%84/"/>
+    
+    
+      <category term="JavaScript" scheme="http://www.xiaoli1992.cn/tags/JavaScript/"/>
+    
+      <category term="数组" scheme="http://www.xiaoli1992.cn/tags/%E6%95%B0%E7%BB%84/"/>
+    
+  </entry>
   
   <entry>
     <title>站在2018</title>

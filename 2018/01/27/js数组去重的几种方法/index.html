@@ -7,13 +7,27 @@
 
     
 
-    <title>css | Mr.X的博客</title>
+    <title>js数组去重的几种方法 | Mr.X的博客</title>
     <meta name="author" content="xiaoli">
+    
+    <meta name="description" content="在工作中经常后台返回的数据，用户的输入==，都会有重复的数据的可能，所以，处理重复的数据是不可避免的，就总结一下数组的几种常见的去重方法
+1.简单的去重方法最简单的数组去重法新建一新数组，遍历传入数组，值不在新数组就push进该数组中IE8以下不支持数组的indexOf方法
+function uniq(array){
+    var temp = [];//一个新的临时数组
+    for(var i = 0; i &amp;lt; array.length; i++){
+        if(temp.indexOf(array[i] == -1)){
+            temp.push(array[i]);
+        }
+    }
+    return temp;
+}
+var aa = [1,2,2,3,4,3,4,5,6,7,8];
+console.log(uniq(aa));">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    
+    <meta property="og:title" content="js数组去重的几种方法"/>
     <meta property="og:site_name" content="Mr.X"/>
 
     
@@ -255,30 +269,178 @@
 
     <main>
         <div class="container main-container">
-    
-
-<nav class="page-nav hide-on-small-only">
+    <nav class="page-nav hide-on-small-only">
     <div class="nav-wrapper indigo">
         <span class="breadcrumb">当前位置（分类目录）</span>
         
+            
+    
+    
+    <a class="breadcrumb" href="/categories/JavaScript/">JavaScript</a><a class="breadcrumb" href="/categories/JavaScript/数组/">数组</a>
+
 
         
-            <a class="breadcrumb" href="/categories/前端/css/">css</a>
+
         
     </div>
 </nav>
 
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>js数组去重的几种方法</h1>
+    
 
 
-    <div class="collection mt-0">
+            </div>
+            <time class="pink-link-context" datetime="2018-01-27T12:12:44.000Z"><a href="/2018/01/27/js数组去重的几种方法/">2018-01-27</a></time>
+
+            <span id="busuanzi_container_page_pv" class="read-times-container">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_value_page_pv"></span>
+</span>
+
+            
+    <div class="tags-row">
         
-            <a href="/2017/05/12/css五种方式实现页脚置底/" class="collection-item grey-text text-darken-1">
-                <time datetime="2017-05-12T08:17:38.000Z">2017-05-12</time>
-                <span>&nbsp;&nbsp;&nbsp;</span>
-                css五种方式实现页脚置底
-            </a>
+            <a href="/tags/JavaScript/" class="chip pink lighten-1">JavaScript</a>
+        
+            <a href="/tags/数组/" class="chip pink lighten-1">数组</a>
         
     </div>
+
+
+            <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#1-简单的去重方法"><span class="section table-of-contents-text">1.简单的去重方法</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#2-对象键值法去重"><span class="section table-of-contents-text">2.对象键值法去重</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#3-排序后相邻去除法"><span class="section table-of-contents-text">3.排序后相邻去除法</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#4-数组下标法"><span class="section table-of-contents-text">4.数组下标法</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#5-优化遍历数组法"><span class="section table-of-contents-text">5.优化遍历数组法</span></a></li></ol>
+</div>
+
+
+            <div class="entry pink-link-context">
+                <p>在工作中经常后台返回的数据，用户的输入==，都会有重复的数据的可能，所以，处理重复的数据是不可避免的，就总结一下数组的几种常见的去重方法</p>
+<h4 id="1-简单的去重方法"><a href="#1-简单的去重方法" class="headerlink" title="1.简单的去重方法"></a>1.简单的去重方法</h4><p>最简单的数组去重法<br>新建一新数组，遍历传入数组，值不在新数组就push进该数组中<br>IE8以下不支持数组的indexOf方法</p>
+<pre><code>function uniq(array){
+    var temp = [];//一个新的临时数组
+    for(var i = 0; i &lt; array.length; i++){
+        if(temp.indexOf(array[i] == -1)){
+            temp.push(array[i]);
+        }
+    }
+    return temp;
+}
+var aa = [1,2,2,3,4,3,4,5,6,7,8];
+console.log(uniq(aa));
+</code></pre><a id="more"></a>
+<h4 id="2-对象键值法去重"><a href="#2-对象键值法去重" class="headerlink" title="2.对象键值法去重"></a>2.对象键值法去重</h4><p>速度最快，占空间最多（空间换时间）<br>该方法执行的速度比其他任何方法都快，就是占用的内存大一些。</p>
+<p>思路：新建一js对象以及新数组，遍历传入数组时，判断值是否为js对象的键，不是的话给对象新增该键并放入数组。</p>
+<p>注意点：判断是否为js对象键时，会自动对传入的键执行”toString()”,</p>
+<p>不同的键可能会误认为一样，例如n[val] – n[1]、n[“1”];</p>
+<p>解决上述问题还是得调用”indexOf”。</p>
+<pre><code>function uniq(array){
+    var temp = {},r = [], len = array.length,val,type;
+    for(var i = 0; i &lt; len; i++){
+        var array[i];
+        type = typeof val;
+        if(!temp[val]){
+            temp[val] = [type];
+            r.push(val);
+        }else if(temp[val].indexOf(type) &lt; 0){
+            temp[val].push(type);
+            r.push(val);
+        }
+    }
+    return r;
+}
+
+var aa = [1,2,3,&quot;3&quot;,4,9,&quot;a&quot;,3,5];
+console.log(uniq(aa));
+</code></pre><h4 id="3-排序后相邻去除法"><a href="#3-排序后相邻去除法" class="headerlink" title="3.排序后相邻去除法"></a>3.排序后相邻去除法</h4><p>给传入数组排序，排序后相同值相邻，</p>
+<p>然后遍历时，新数组只加入不与前一值重复的值。</p>
+<p>会打乱原来数组的顺序</p>
+<pre><code>function uniq(array){
+    array.sort();
+    var temp = [array[0]];
+    for(var i = 0; i &lt; array.length; i++){
+        if(array[i] !== temp[temp.length-1]){
+            temp.push(array[i]);
+        }
+    }
+    return temp;
+}
+
+var aa = [1,2,&quot;2&quot;,4,9,&quot;a&quot;,2,3,5,6];
+console.log(uniq(aa));
+</code></pre><h4 id="4-数组下标法"><a href="#4-数组下标法" class="headerlink" title="4.数组下标法"></a>4.数组下标法</h4><p>还是得调用”indexOf”性能跟方法1差不多，</p>
+<p>实现思路：如果当前数组的第i项在当前数组中第一次出现的位置不是i,</p>
+<p>那么表示第i项是重复的，忽略掉。否则存入结果数组。</p>
+<pre><code>function uniq(array){
+    var temp = [];
+    for(var i = 0;i &lt; array.length;i++){
+        //如果当前数组的第i项在当前数组中第一次出现的位置是i,才存入数组，否则代表是重复的
+        if(array.indexOf(array[i] == i)){
+            temp.push(array[i]);
+        }
+    }
+    return temp;
+}
+
+var aa = [1,2,&quot;2&quot;,4,9,&quot;a&quot;,&quot;a&quot;,2,3,5,6,5];
+console.log(uniq(aa));
+</code></pre><h4 id="5-优化遍历数组法"><a href="#5-优化遍历数组法" class="headerlink" title="5.优化遍历数组法"></a>5.优化遍历数组法</h4><p>思路：获取没重复的最右一值放入新数组<br>（检测到有重复值时终止当前循环同时进入顶层循环的下一轮判断）</p>
+<pre><code>function uniq(array){
+    var temp = [],index = [];
+    var l = array.length;
+    for(var i = 0;i &lt; l;i++){
+        for(var j = i+1; j &lt; l;j++){
+            if(array[i] === array[j]){
+                i++;
+                j = i;
+            }
+        }
+        temp.push(array[i]);
+        index.push(i);
+    }
+    console.log(index);
+    return temp;
+}
+
+var aa = [1,2,2,3,5,3,6,5];
+console.log(uniq(aa));
+</code></pre>
+                
+<p class="pink-link-context">
+    <a href="/2018/01/25/js数组的一些基本操作/" rel="next" title="js数组的一些基本操作">
+    上一篇：js数组的一些基本操作
+  </a>
+</p>
+
+
+
+
+            </div>
+			
+        </div>
+    </div>
+</article>
+
+
+
+
+    <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href,
+        sourceId: "",
+        productKey: "true",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+
 
 
 </div>

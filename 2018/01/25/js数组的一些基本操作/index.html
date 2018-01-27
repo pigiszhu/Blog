@@ -7,13 +7,20 @@
 
     
 
-    <title>css | Mr.X的博客</title>
+    <title>js数组的一些基本操作 | Mr.X的博客</title>
     <meta name="author" content="xiaoli">
+    
+    <meta name="description" content="这几天因为工作上做的一些功能中需要大量的用到数组，对数组的各种操作，度娘了很多，基本上是需要用到什么就度娘什么，整理一下数组的知识，以后就不用总是去百度啦！
+创建数组的几种方式1、直接量创建var array = [];//创建一个空数组
+var array = [1,2,3];//创建一个有三个元素的数组
+2、构造函数创建var array = new Array();//创建空数组
+var array = new Array(10);//创建一个长度为10的数组
+var array = new Array(5,4,3,2,1)//创建数组并初始化">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    
+    <meta property="og:title" content="js数组的一些基本操作"/>
     <meta property="og:site_name" content="Mr.X"/>
 
     
@@ -255,30 +262,197 @@
 
     <main>
         <div class="container main-container">
-    
-
-<nav class="page-nav hide-on-small-only">
+    <nav class="page-nav hide-on-small-only">
     <div class="nav-wrapper indigo">
         <span class="breadcrumb">当前位置（分类目录）</span>
         
+            
+    
+    
+    <a class="breadcrumb" href="/categories/JavaScript/">JavaScript</a><a class="breadcrumb" href="/categories/JavaScript/数组/">数组</a>
+
 
         
-            <a class="breadcrumb" href="/categories/前端/css/">css</a>
+
         
     </div>
 </nav>
 
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>js数组的一些基本操作</h1>
+    
 
 
-    <div class="collection mt-0">
+            </div>
+            <time class="pink-link-context" datetime="2018-01-25T08:25:31.000Z"><a href="/2018/01/25/js数组的一些基本操作/">2018-01-25</a></time>
+
+            <span id="busuanzi_container_page_pv" class="read-times-container">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_value_page_pv"></span>
+</span>
+
+            
+    <div class="tags-row">
         
-            <a href="/2017/05/12/css五种方式实现页脚置底/" class="collection-item grey-text text-darken-1">
-                <time datetime="2017-05-12T08:17:38.000Z">2017-05-12</time>
-                <span>&nbsp;&nbsp;&nbsp;</span>
-                css五种方式实现页脚置底
-            </a>
+            <a href="/tags/JavaScript/" class="chip pink lighten-1">JavaScript</a>
+        
+            <a href="/tags/数组/" class="chip pink lighten-1">数组</a>
         
     </div>
+
+
+            <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#创建数组的几种方式"><span class="section table-of-contents-text">创建数组的几种方式</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#1、直接量创建"><span class="section table-of-contents-text">1、直接量创建</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#2、构造函数创建"><span class="section table-of-contents-text">2、构造函数创建</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#取值、赋值"><span class="section table-of-contents-text">取值、赋值</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#添加新元素"><span class="section table-of-contents-text">添加新元素</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#删除元素"><span class="section table-of-contents-text">删除元素</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#根据指定下标删除数组元素"><span class="section table-of-contents-text">根据指定下标删除数组元素</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#数组的合并、截取"><span class="section table-of-contents-text">数组的合并、截取</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#数组的排序"><span class="section table-of-contents-text">数组的排序</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#数组转字符串"><span class="section table-of-contents-text">数组转字符串</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#方法1"><span class="section table-of-contents-text">方法1</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#方法2"><span class="section table-of-contents-text">方法2</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#字符串转数组"><span class="section table-of-contents-text">字符串转数组</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#清空数组的三种方法"><span class="section table-of-contents-text">清空数组的三种方法</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#方法1：splice方法"><span class="section table-of-contents-text">方法1：splice方法</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#方法2：赋值length为0"><span class="section table-of-contents-text">方法2：赋值length为0</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#方法三：数组赋值"><span class="section table-of-contents-text">方法三：数组赋值[]</span></a></li></ol></li></ol>
+</div>
+
+
+            <div class="entry pink-link-context">
+                <p>这几天因为工作上做的一些功能中需要大量的用到数组，对数组的各种操作，度娘了很多，基本上是需要用到什么就度娘什么，整理一下数组的知识，以后就不用总是去百度啦！</p>
+<h3 id="创建数组的几种方式"><a href="#创建数组的几种方式" class="headerlink" title="创建数组的几种方式"></a>创建数组的几种方式</h3><h4 id="1、直接量创建"><a href="#1、直接量创建" class="headerlink" title="1、直接量创建"></a>1、直接量创建</h4><pre><code>var array = [];//创建一个空数组
+var array = [1,2,3];//创建一个有三个元素的数组
+</code></pre><h4 id="2、构造函数创建"><a href="#2、构造函数创建" class="headerlink" title="2、构造函数创建"></a>2、构造函数创建</h4><pre><code>var array = new Array();//创建空数组
+var array = new Array(10);//创建一个长度为10的数组
+var array = new Array(5,4,3,2,1)//创建数组并初始化
+</code></pre><a id="more"></a>
+<h3 id="取值、赋值"><a href="#取值、赋值" class="headerlink" title="取值、赋值"></a>取值、赋值</h3><pre><code>var item = array[index];//获取指定元素的值
+array[index] = value; //为指定元素赋值
+</code></pre><h3 id="添加新元素"><a href="#添加新元素" class="headerlink" title="添加新元素"></a>添加新元素</h3><pre><code>array.push(item1,item2,...,itemN);//向数组的末尾添加一个或多个元素，并返回新数组的长度
+array.unshift(item1,item2,...,itemN);//向数组的开头添加一个或多个元素，并返回新的长度
+array.splice(index,howmany,item1,item2……itemN);//向/从数组中添加/添加项目，然后返回被删除的项目。
+//注释:该方法会改变原始数组
+index:必需。整数，规定添加/删除项目的位置，使用负数可从数组结尾处规定位置
+howmany:必需。要删除的项目数组。如果设置为0，则不会删除项目。
+item1,item2……itemN 可选。向数组添加的新项目
+</code></pre><h3 id="删除元素"><a href="#删除元素" class="headerlink" title="删除元素"></a>删除元素</h3><pre><code>array.pop();//删除最后一个元素，并返回该元素
+array.shift();//删除第一个元素，数组元素位置自动迁移，返回被删除的元素
+array.splice(start,delCount);//从start的位置开始向后删除delCount个元素
+</code></pre><h4 id="根据指定下标删除数组元素"><a href="#根据指定下标删除数组元素" class="headerlink" title="根据指定下标删除数组元素"></a>根据指定下标删除数组元素</h4><p>列了这么都就是没有发现删除数组元素的方法！于是查了一些资料找到了解决方法。<br>删除数组元素需要扩展Array原型prototype<br>将一下代码放在全局js文件中</p>
+<pre><code>Array.prototype.remove=function(obj){
+    for(var i = 0;i &lt; this.length;i++){
+        var temp = this[i];
+        if(!isNaN(obj)){
+            temp=i;
+        }
+        if(temp == obj){
+            for(var j = i;j &lt;this.length;j++){
+                this[j]=this[j+1];
+            }
+            this.length = this.length-1;
+        }
+    }
+}
+使用方法
+var arr =new Array();
+arr[0]=&quot;dddddd&quot;;
+arr[1]=&quot;dxxxxxxx&quot;;
+arr[2]=&quot;vvvvvvv&quot;;
+arr[3]=&quot;dbbbbb&quot;;
+var str =&quot;vvvvvvv&quot;;
+arr.remove(3);//删除下标为3的对象
+arr.remove(str);//删除对象值为“vvvvvvv”
+</code></pre><h3 id="数组的合并、截取"><a href="#数组的合并、截取" class="headerlink" title="数组的合并、截取"></a>数组的合并、截取</h3><pre><code>array.slice(start,end)//从已有的数组中返回选定的元素所组成的一个新数组，包含startdao end(不包括该元素)
+start:必需。规定从start开始选取。如果是负数，那么它规定从数组尾部开始算起的位置。-1指最后一个元素，以此类推。
+end:可选。规定从何处结束选取。该参数是数组片断结束处的数组下标。如果没有指定该参数，那么切分的数组包含从 start 到数组结束的所有元素。
+如果这个参数是负数，那么它规定的是从数组尾部开始算起的元素。
+array.concat(array1,array2);//用于连接两个或多个数组
+该方法不会改变现有的数组，返回一个新的数组。
+</code></pre><h3 id="数组的排序"><a href="#数组的排序" class="headerlink" title="数组的排序"></a>数组的排序</h3><pre><code>array.reverse();//数组反转
+array.sort();//数组排序，返回数组地址
+</code></pre><h3 id="数组转字符串"><a href="#数组转字符串" class="headerlink" title="数组转字符串"></a>数组转字符串</h3><h4 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h4><pre><code>var a,,c;
+a = new Array(a,b,c,d,e);
+b = a.join(&apos;-&apos;);//a-b-c-d-e 使用-拼接数组元素
+c = a.join(&apos;&apos;);//abcde
+</code></pre><h4 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h4><pre><code>var arr = new Array(3)
+arr[0] = &quot;George&quot;
+arr[1] = &quot;John&quot;
+arr[2] = &quot;Thomas&quot;
+document.write(arr.toString())
+输出：
+George,John,Thomas
+</code></pre><h3 id="字符串转数组"><a href="#字符串转数组" class="headerlink" title="字符串转数组"></a>字符串转数组</h3><pre><code>使用split()方法用于把一个字符串分割成字符串数组
+语法：stringObject.split(separator,howmany)
+separator：必需。字符串或正则表达式，从该参数指定的地方分割 stringObject。
+howmany：可选。该参数可指定返回的数组的最大长度。
+如果设置了该参数，返回的子串不会多于这个参数指定的数组。
+如果没有设置该参数，整个字符串都会被分割，不考虑它的长度。
+例子1：
+var str=&quot;How are you doing today?&quot;
+document.write(str.split(&quot; &quot;) + &quot;&lt;br /&gt;&quot;)
+document.write(str.split(&quot;&quot;) + &quot;&lt;br /&gt;&quot;)
+document.write(str.split(&quot; &quot;,3))
+输出：
+How,are,you,doing,today?
+H,o,w, ,a,r,e, ,y,o,u, ,d,o,i,n,g, ,t,o,d,a,y,?
+How,are,you
+也可以使用正则表达式作为 separator
+var words = sentence.split(/\s+/)
+</code></pre><h3 id="清空数组的三种方法"><a href="#清空数组的三种方法" class="headerlink" title="清空数组的三种方法"></a>清空数组的三种方法</h3><h4 id="方法1：splice方法"><a href="#方法1：splice方法" class="headerlink" title="方法1：splice方法"></a>方法1：splice方法</h4><p>splice()方法用于插入、删除或替换数组的元素。</p>
+<pre><code>var arr = [1, 2, 3, 4];
+arr.splice(2,1,&quot;Lemon&quot;,&quot;Kiwi&quot;);
+//第一个参数为删除和添加数组的起始位置，
+//第二个参数为删除多少个元素，
+//第三个参数为添加新的元素
+console.log(arr)
+//输出1,2,Lemon,Kiwi,4
+</code></pre><p>所以清空数组相当于删除数组中的所有元素</p>
+<pre><code>var arr = [1, 2, 3, 4];
+arr.splice(0, arr.length);
+console.log(arr);
+//输出[]，空数组
+</code></pre><h4 id="方法2：赋值length为0"><a href="#方法2：赋值length为0" class="headerlink" title="方法2：赋值length为0"></a>方法2：赋值length为0</h4><p>javascript中数组的length和其他的语言的数组中length不同，js中数组length可以自己设置大小，意思是可读可写的，但其他语言如java,c++中都是不能进行修改，只读形式存在。<br>如java中对数组length赋值将报错</p>
+<p>但在js中则可以修改，这样就达到了清空数组的目的</p>
+<pre><code>var arr = [1, 2, 3, 4];
+arr.length = 0;
+console.log(arr);
+//输出[]，空数组
+</code></pre><h4 id="方法三：数组赋值"><a href="#方法三：数组赋值" class="headerlink" title="方法三：数组赋值[]"></a>方法三：数组赋值[]</h4><pre><code>var arr = [1, 2, 3, 4]; 
+arr = [];
+这里其实并不能说是严格意义的清空数组，只是将arr重新赋值为空数组
+之前的数组如果没有引用在指向它将等待垃圾回收。
+</code></pre>
+                
+<p class="pink-link-context">
+    <a href="/2018/01/22/站在2018/" rel="next" title="站在2018">
+    上一篇：站在2018
+  </a>
+</p>
+
+
+
+<p class="pink-link-context">
+    <a href="/2018/01/27/js数组去重的几种方法/" rel="next" title="js数组去重的几种方法">
+    下一篇：js数组去重的几种方法
+  </a>
+</p>
+
+
+            </div>
+			
+        </div>
+    </div>
+</article>
+
+
+
+
+    <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href,
+        sourceId: "",
+        productKey: "true",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+
 
 
 </div>

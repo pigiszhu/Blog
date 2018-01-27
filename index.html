@@ -169,6 +169,30 @@
             
 
             <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/JavaScript/">
+                    JavaScript <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/JavaScript/数组/">
+                    数组 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/hexo/">
+                    hexo <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/前端/">
                     前端 <span class="right">1 篇</span></a>
                 </a>
@@ -195,14 +219,6 @@
             <li class="collapse-level-1" collapse-level="1">
                 <a class="no-padding" href="/categories/Vue/Vue基础/">
                     Vue基础 <span class="right">1 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/hexo/">
-                    hexo <span class="right">2 篇</span></a>
                 </a>
             </li>
 
@@ -279,6 +295,107 @@
 
 
 <div id="article-list" class="container main-container">
+    
+        <article class="simple-article">
+    <div class="card">
+        <div class="card-content">
+            <div class="article-title">
+                
+    
+        <h1 class="indigo-link-context"><a href="/2018/01/27/js数组去重的几种方法/">js数组去重的几种方法</a></h1>
+    
+
+
+            </div>
+
+            <time class="pink-link-context" datetime="2018-01-27T12:12:44.000Z"><a href="/2018/01/27/js数组去重的几种方法/">2018-01-27</a></time>
+
+            
+    <div class="tags-row">
+        
+            <a href="/tags/JavaScript/" class="chip pink lighten-1">JavaScript</a>
+        
+            <a href="/tags/数组/" class="chip pink lighten-1">数组</a>
+        
+    </div>
+
+
+
+            
+                <div class="entry pink-link-context">
+                    <p>在工作中经常后台返回的数据，用户的输入==，都会有重复的数据的可能，所以，处理重复的数据是不可避免的，就总结一下数组的几种常见的去重方法</p>
+<h4 id="1-简单的去重方法"><a href="#1-简单的去重方法" class="headerlink" title="1.简单的去重方法"></a>1.简单的去重方法</h4><p>最简单的数组去重法<br>新建一新数组，遍历传入数组，值不在新数组就push进该数组中<br>IE8以下不支持数组的indexOf方法</p>
+<pre><code>function uniq(array){
+    var temp = [];//一个新的临时数组
+    for(var i = 0; i &lt; array.length; i++){
+        if(temp.indexOf(array[i] == -1)){
+            temp.push(array[i]);
+        }
+    }
+    return temp;
+}
+var aa = [1,2,2,3,4,3,4,5,6,7,8];
+console.log(uniq(aa));
+</code></pre>
+                </div>
+            
+        </div>
+
+        
+        <div class="card-action pink-link-context">
+            <a href="/2018/01/27/js数组去重的几种方法/">阅读全文</a>
+        </ div>
+        
+    </div>
+</article>
+
+    
+        <article class="simple-article">
+    <div class="card">
+        <div class="card-content">
+            <div class="article-title">
+                
+    
+        <h1 class="indigo-link-context"><a href="/2018/01/25/js数组的一些基本操作/">js数组的一些基本操作</a></h1>
+    
+
+
+            </div>
+
+            <time class="pink-link-context" datetime="2018-01-25T08:25:31.000Z"><a href="/2018/01/25/js数组的一些基本操作/">2018-01-25</a></time>
+
+            
+    <div class="tags-row">
+        
+            <a href="/tags/JavaScript/" class="chip pink lighten-1">JavaScript</a>
+        
+            <a href="/tags/数组/" class="chip pink lighten-1">数组</a>
+        
+    </div>
+
+
+
+            
+                <div class="entry pink-link-context">
+                    <p>这几天因为工作上做的一些功能中需要大量的用到数组，对数组的各种操作，度娘了很多，基本上是需要用到什么就度娘什么，整理一下数组的知识，以后就不用总是去百度啦！</p>
+<h3 id="创建数组的几种方式"><a href="#创建数组的几种方式" class="headerlink" title="创建数组的几种方式"></a>创建数组的几种方式</h3><h4 id="1、直接量创建"><a href="#1、直接量创建" class="headerlink" title="1、直接量创建"></a>1、直接量创建</h4><pre><code>var array = [];//创建一个空数组
+var array = [1,2,3];//创建一个有三个元素的数组
+</code></pre><h4 id="2、构造函数创建"><a href="#2、构造函数创建" class="headerlink" title="2、构造函数创建"></a>2、构造函数创建</h4><pre><code>var array = new Array();//创建空数组
+var array = new Array(10);//创建一个长度为10的数组
+var array = new Array(5,4,3,2,1)//创建数组并初始化
+</code></pre>
+                </div>
+            
+        </div>
+
+        
+        <div class="card-action pink-link-context">
+            <a href="/2018/01/25/js数组的一些基本操作/">阅读全文</a>
+        </ div>
+        
+    </div>
+</article>
+
     
         <article class="simple-article">
     <div class="card">
