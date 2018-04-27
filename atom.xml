@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.xiaoli1992.cn/"/>
-  <updated>2018-04-20T10:39:08.633Z</updated>
+  <updated>2018-04-27T09:23:46.912Z</updated>
   <id>http://www.xiaoli1992.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>注释那些事儿</title>
+    <link href="http://www.xiaoli1992.cn/2018/04/27/%E6%B3%A8%E9%87%8A%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/"/>
+    <id>http://www.xiaoli1992.cn/2018/04/27/注释那些事儿/</id>
+    <published>2018-04-27T08:52:45.000Z</published>
+    <updated>2018-04-27T09:23:46.912Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p><strong>好的注释可以提高代码的可读性和可维护性，从而提高代码质量。</strong></p></blockquote><p><strong>那么什么是好的注释？如何写出好的注释？本文将从注释的目的和原则出发对 JS 注释进行探讨。</strong></p><h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><h3 id="1、注释的目的和原则"><a href="#1、注释的目的和原则" class="headerlink" title="1、注释的目的和原则"></a>1、注释的目的和原则</h3><h4 id="注释的目的："><a href="#注释的目的：" class="headerlink" title="注释的目的："></a>注释的目的：</h4><ul><li>提高代码的可读性，从而提高代码的可维护性</li></ul><h4 id="注释的原则："><a href="#注释的原则：" class="headerlink" title="注释的原则："></a>注释的原则：</h4><ul><li><p>如无必要，勿增注释 ( As short as possible )</p></li><li><p>如有必要，尽量详尽 ( As long as necessary )</p></li></ul><p>我们写注释，是为了给代码的读者（包括我们自己，也可能包括机器，如 jsdoc）看，帮助读者阅读理解代码并进行维护。</p><p>「如无必要，勿增注释」是指注释要避免过多过滥，不要为了注释而注释。多余的注释等价于冗余的代码，除了对增加可读性无益，一旦代码需要修改，修改注释也会是一大负担。<br>我们应当追求「代码自注释」，即代码本身就拥有较高的可读性（通过清晰的命名、合理的结构等）。举个例子：</p><pre><code>// bad// 如果已经准备好数据，就渲染表格if (data.success &amp;&amp; data.result.length &gt; 0) {  renderTable(data);  }// goodconst isTableDataReady = data.success &amp;&amp; data.result.length &gt; 0;if (isTableDataReady) {  renderTable(data);}</code></pre><p>「如有必要，尽量详尽」是指需要注释的地方应该尽量详尽地去写，以让阅读者可以充分了解代码的逻辑和意图为标准。</p><h3 id="2、什么是好注释，什么是坏注释"><a href="#2、什么是好注释，什么是坏注释" class="headerlink" title="2、什么是好注释，什么是坏注释"></a>2、什么是好注释，什么是坏注释</h3><p>根据注释的原则，我们应该以「能否帮助阅读者更好地阅读理解代码」为标准，判断一个注释「是否有必要」。</p><h4 id="好的注释包括："><a href="#好的注释包括：" class="headerlink" title="好的注释包括："></a>好的注释包括：</h4><ul><li><p>帮助读者更好地了解代码逻辑和结构，例如：</p><pre><code>init: function() {  // 获取配置信息  const config = getConfig();  // 获取用户信息  const userInfo = getUserInfo();  // 根据配置和用户信息，进行初始化  doInit(config, userInfo);  // 如果存在自定义配置时的特殊逻辑  if (config.custom) {    ...  }}</code></pre></li><li><p>特殊或不易理解写法的解释说明，例如：</p><pre><code>/** * parseInt was the reason my code was slow. * Bitshifting the String to coerce it to a * Number made it a lot faster. */const val = inputValue &gt;&gt; 0;</code></pre></li><li><p>特殊标记注释：如 TODO、FIXME 等有特殊含义的标记</p></li><li><p>文件注释：部分规约会约定在文件头部书写固定格式的注释，如注明作者、协议等信息</p></li><li><p>文档类注释：部分规约会约定 API、类、函数等使用文档类注释（如 jsdoc 风格）</p></li><li><p>遵循统一的风格规范，如一定的空格、空行，以保证注释自身的可读性</p></li></ul><h4 id="坏的注释包括："><a href="#坏的注释包括：" class="headerlink" title="坏的注释包括："></a>坏的注释包括：</h4><ul><li><p>注释对阅读代码无益：如本文第一个示例，本可以不用注释，用清晰的命名、逻辑进行代码自注释</p></li><li><p>未遵循统一的风格规范：如单行注释长度、空格、空行，例如：</p><pre><code>// bad 单行注释过长，不易阅读，应写成多行// parseInt was the reason my code was slow.Bitshifting the String to coerce it to Number made it a lot faster.const val = inputValue &gt;&gt; 0;// good/** * parseInt was the reason my code was slow. * Bitshifting the String to coerce it to a * Number made it a lot faster. */const val = inputValue &gt;&gt; 0;</code></pre></li><li>情绪性注释：如抱怨、歧视、搞怪等（被发现你就跪了）</li></ul><h3 id="3、如何写好注释"><a href="#3、如何写好注释" class="headerlink" title="3、如何写好注释"></a>3、如何写好注释</h3><h4 id="注释规约"><a href="#注释规约" class="headerlink" title="注释规约"></a>注释规约</h4><p>理解注释的目的和原则，制定并遵循一份注释规约，以保证注释的可读性和一致性</p><h4 id="工具保障"><a href="#工具保障" class="headerlink" title="工具保障"></a>工具保障</h4><p>比如使用 ESLint 保证注释风格的一致，使用 Sonar 检查项目注释率</p><h3 id="4、注释规约"><a href="#4、注释规约" class="headerlink" title="4、注释规约"></a>4、注释规约</h3><p>这里给出一份可供参考的注释规约（参考自airbnb规约）：</p><p>####4.1 【推荐】单行注释使用 //</p><p>注释应单独一行写在被注释对象的上方，不要追加在某条语句的后面：</p><pre><code>// badconst active = true; // is current tab// good// is current tabconst active = true;注释行的上方需要有一个空行（除非注释行上方是一个块的顶部），以增加可读性：    // badfunction getType() {   console.log(&apos;fetching type...&apos;);   // set the default type to &apos;no type&apos;  const type = this.type || &apos;no type&apos;;   return type;}// goodfunction getType() {   console.log(&apos;fetching type...&apos;);   // set the default type to &apos;no type&apos;  const type = this.type || &apos;no type&apos;;   return type;}// good// 注释行上面是一个块的顶部时不需要空行function getType() {   // set the default type to &apos;no type&apos;  const type = this.type || &apos;no type&apos;;                      return type;}</code></pre><h4 id="4-2-【推荐】多行注释使用-…-，而不是多行的"><a href="#4-2-【推荐】多行注释使用-…-，而不是多行的" class="headerlink" title="4.2 【推荐】多行注释使用 /* … /，而不是多行的 //"></a>4.2 【推荐】多行注释使用 /<em>* … </em>/，而不是多行的 //</h4><pre><code>// bad// make() returns a new element// based on the passed in tag namefunction make(tag) {  // ...  return element;}// good/** * make() returns a new element * based on the passed-in tag name */function make(tag) {  // ...  return element;}</code></pre><h4 id="4-3-【强制】注释内容和注释符之间需要有一个空格，以增加可读性。eslint-spaced-comment"><a href="#4-3-【强制】注释内容和注释符之间需要有一个空格，以增加可读性。eslint-spaced-comment" class="headerlink" title="4.3 【强制】注释内容和注释符之间需要有一个空格，以增加可读性。eslint: spaced-comment"></a>4.3 【强制】注释内容和注释符之间需要有一个空格，以增加可读性。eslint: spaced-comment</h4><pre><code>// bad//is current tabconst active = true;// good// is current tabconst active = true;// bad/** *make() returns a new element *based on the passed-in tag name */function make(tag) {    // ...  return element;}// good/** * make() returns a new element * based on the passed-in tag name */function make(tag) {   // ...  return element;}</code></pre><h4 id="4-4-【推荐】使用特殊注释标记"><a href="#4-4-【推荐】使用特殊注释标记" class="headerlink" title="4.4 【推荐】使用特殊注释标记"></a>4.4 【推荐】使用特殊注释标记</h4><p>有时我们发现某个可能的 bug，但因为一些原因还没法修复；或者某个地方还有一些待完成的功能，这时我们需要使用相应的特殊标记注释来告知未来的自己或合作者。常用的特殊标记有两种：</p><ul><li><p>// FIXME: 说明问题是什么</p></li><li><p>// TODO: 说明还要做什么或者问题的解决方案</p></li></ul><pre><code>class Calculator extends Abacus {  constructor() {    super();    // FIXME: shouldn’t use a global here    total = 0;    // TODO: total should be configurable by an options param    this.total = 0;  }}</code></pre><h4 id="4-5-【推荐】文档类注释，如函数、类、文件、事件等，使用-jsdoc-规范"><a href="#4-5-【推荐】文档类注释，如函数、类、文件、事件等，使用-jsdoc-规范" class="headerlink" title="4.5 【推荐】文档类注释，如函数、类、文件、事件等，使用 jsdoc 规范"></a>4.5 【推荐】文档类注释，如函数、类、文件、事件等，使用 jsdoc 规范</h4><p>例如：</p><pre><code>/** * Book类，代表一个书本. * @constructor * @param {string} title - 书本的标题. * @param {string} author - 书本的作者. */function Book(title, author) {  this.title=title;  this.author=author;}Book.prototype={  /**   * 获取书本的标题   * @returns {string|*}   */  getTitle:function(){    return this.title;  },  /**   * 设置书本的页数   * @param pageNum {number} 页数   */  setPageNum:function(pageNum){    this.pageNum=pageNum;  }};</code></pre><h3 id="5、工具"><a href="#5、工具" class="headerlink" title="5、工具"></a>5、工具</h3><p>我们可以使用一些工具来保证注释质量，例如：</p><p><strong>Eslint：保证一致的注释风格</strong></p><p>ESLint 是当下最流行的 JS 代码检查工具，ESLint 中有一些注释相关的规则，用户可选择开启：</p><ul><li><p>valid-jsdoc</p></li><li><p>require-jsdoc</p></li><li><p>no-warning-comments</p></li><li><p>capitalized-comments</p></li><li><p>line-comment-position</p></li><li><p>lines-around-comment</p></li><li><p>multiline-comment-style</p></li><li><p>no-inline-comments</p></li><li><p>spaced-comment</p></li></ul><p>Sonar：检查项目的注释率</p><p>Sonar 是一个代码持续集成平台，它可以对代码进行静态扫描，得到项目的注释率数据。</p><p>注释率反应了注释行占总代码行的比例，注释率太低不好，但也不能盲目追求高注释率。</p><p>另外，同 Eslint 类似，Sonar 也有一些针对注释风格规则可以配置。</p><h3 id="6、后记"><a href="#6、后记" class="headerlink" title="6、后记"></a>6、后记</h3><p>理解注释的目的和原则，遵循一份注释规约并结合工具保证落地，可以使注释成为代码良好的辅助，增强可读性和可维护性，从而提高代码质量。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;好的注释可以提高代码的可读性和可维护性，从而提高代码质量。&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;那么什么是好的注释？如何写出好的注释？本文将从注释的目的和原则出发对 JS 注释进行探讨。&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;
+    
+    </summary>
+    
+      <category term="注释" scheme="http://www.xiaoli1992.cn/categories/%E6%B3%A8%E9%87%8A/"/>
+    
+    
+      <category term="注释" scheme="http://www.xiaoli1992.cn/tags/%E6%B3%A8%E9%87%8A/"/>
+    
+  </entry>
   
   <entry>
     <title>CSS选择器详解</title>
@@ -224,9 +250,9 @@ var array = new Array(5,4,3,2,1)//创建数组并初始化
       <category term="hexo" scheme="http://www.xiaoli1992.cn/categories/hexo/"/>
     
     
-      <category term="hexo" scheme="http://www.xiaoli1992.cn/tags/hexo/"/>
-    
       <category term="博客" scheme="http://www.xiaoli1992.cn/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+      <category term="hexo" scheme="http://www.xiaoli1992.cn/tags/hexo/"/>
     
   </entry>
   
