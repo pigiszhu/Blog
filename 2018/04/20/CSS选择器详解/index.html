@@ -1,0 +1,876 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+    <title>CSS选择器详解 | Mr.X的博客</title>
+    <meta name="author" content="xiaoli">
+    
+    <meta name="description" content="选择器的种类有很多，可以到 w3cschool 去看看了解一下。也可以在 慕课网 中实践一下。
+一、上下文选择器标签选择器&amp;lt;style&amp;gt;
+  h1 {font-size: 16px;}
+  p {color:red;}
+&amp;lt;/style&amp;gt;
+代码中的h1和p就是选择器，他们是选择器里面最常用的一种，叫做标签选择器。我们可以直接通过标签元素来指定需要添加样式的位置。">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="CSS选择器详解"/>
+    <meta property="og:site_name" content="Mr.X"/>
+
+    
+    <meta property="og:image" content="undefined"/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="Mr.X" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/prettify-tomorrow-night-eighties.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+
+<body>
+    <img src="/weixin_favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+    <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">Mr.X</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-reading " href="/reading" >
+                            <i class="fa fa-book "></i>
+                            
+                            读书
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="http://oojru7lbc.bkt.clouddn.com/touxiang.jpg" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">青椒炒鸡蛋</p>
+                        <p class="desc">Web前端开发菜鸟</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-reading " href="/reading" >
+                    <i class="fa fa-book "></i>
+                    
+                    读书
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/CSS/">
+                    CSS <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/前端/">
+                    前端 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/前端/css/">
+                    css <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/hexo/">
+                    hexo <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/JavaScript/">
+                    JavaScript <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/JavaScript/数组/">
+                    数组 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Vue/">
+                    Vue <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/Vue/Vue基础/">
+                    Vue基础 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/古诗词/">
+                    古诗词 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+    <main>
+        <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/CSS/">CSS</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>CSS选择器详解</h1>
+    
+
+
+            </div>
+            <time class="pink-link-context" datetime="2018-04-20T09:32:18.000Z"><a href="/2018/04/20/CSS选择器详解/">2018-04-20</a></time>
+
+            <span id="busuanzi_container_page_pv" class="read-times-container">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_value_page_pv"></span>
+</span>
+
+            
+    <div class="tags-row">
+        
+            <a href="/tags/CSS/" class="chip pink lighten-1">CSS</a>
+        
+            <a href="/tags/选择器/" class="chip pink lighten-1">选择器</a>
+        
+    </div>
+
+
+            <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#一、上下文选择器"><span class="section table-of-contents-text">一、上下文选择器</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#标签选择器"><span class="section table-of-contents-text">标签选择器</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#后代组合选择器"><span class="section table-of-contents-text">后代组合选择器</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#子选择器"><span class="section table-of-contents-text">子选择器</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#同胞选择器"><span class="section table-of-contents-text">同胞选择器</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#一般同胞选择器"><span class="section table-of-contents-text">一般同胞选择器</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#通用选择器"><span class="section table-of-contents-text">通用选择器</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#二、id和类选择器"><span class="section table-of-contents-text">二、id和类选择器</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#类选择器"><span class="section table-of-contents-text">类选择器</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-5"><a class="section table-of-contents-link" href="#1、类选择器"><span class="section table-of-contents-text">1、类选择器</span></a></li><li class="section table-of-contents-item section table-of-contents-level-5"><a class="section table-of-contents-link" href="#2、标签带类选择器"><span class="section table-of-contents-text">2、标签带类选择器</span></a></li><li class="section table-of-contents-item section table-of-contents-level-5"><a class="section table-of-contents-link" href="#3、多类选择器"><span class="section table-of-contents-text">3、多类选择器</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#ID选择器"><span class="section table-of-contents-text">ID选择器</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#什么时候用ID，什么时候用类"><span class="section table-of-contents-text">什么时候用ID，什么时候用类</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-5"><a class="section table-of-contents-link" href="#1、什么时候用id"><span class="section table-of-contents-text">1、什么时候用id</span></a></li><li class="section table-of-contents-item section table-of-contents-level-5"><a class="section table-of-contents-link" href="#2、什么时候用类"><span class="section table-of-contents-text">2、什么时候用类</span></a></li><li class="section table-of-contents-item section table-of-contents-level-5"><a class="section table-of-contents-link" href="#总结（来自知乎：Milo）"><span class="section table-of-contents-text">总结（来自知乎：Milo）</span></a></li></ol></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#三、属性选择器"><span class="section table-of-contents-text">三、属性选择器</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#属性名选择器"><span class="section table-of-contents-text">属性名选择器</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#属性值选择器"><span class="section table-of-contents-text">属性值选择器</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#属性和值选择器-多个值"><span class="section table-of-contents-text">属性和值选择器-多个值</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#设置表单样式"><span class="section table-of-contents-text">设置表单样式</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#四、伪类"><span class="section table-of-contents-text">四、伪类</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#UI伪类"><span class="section table-of-contents-text">UI伪类</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-5"><a class="section table-of-contents-link" href="#1、链接伪类"><span class="section table-of-contents-text">1、链接伪类</span></a></li><li class="section table-of-contents-item section table-of-contents-level-5"><a class="section table-of-contents-link" href="#2、focus伪类"><span class="section table-of-contents-text">2、focus伪类</span></a></li><li class="section table-of-contents-item section table-of-contents-level-5"><a class="section table-of-contents-link" href="#3、：target伪类"><span class="section table-of-contents-text">3、：target伪类</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#结构化伪类"><span class="section table-of-contents-text">结构化伪类</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-5"><a class="section table-of-contents-link" href="#1、-first-child和-last-child"><span class="section table-of-contents-text">1、:first-child和:last-child</span></a></li><li class="section table-of-contents-item section table-of-contents-level-5"><a class="section table-of-contents-link" href="#2、nth-child-n"><span class="section table-of-contents-text">2、nth-child(n)</span></a></li></ol></li></ol></li></ol>
+</div>
+
+
+            <div class="entry pink-link-context">
+                <p>选择器的种类有很多，可以到 <a href="http://www.w3school.com.cn/cssref/css_selectors.asp" target="_blank" rel="external">w3cschool</a> 去看看了解一下。也可以在 <a href="http://www.imooc.com/learn/9" target="_blank" rel="external">慕课网</a> 中实践一下。</p>
+<h3 id="一、上下文选择器"><a href="#一、上下文选择器" class="headerlink" title="一、上下文选择器"></a>一、上下文选择器</h3><h4 id="标签选择器"><a href="#标签选择器" class="headerlink" title="标签选择器"></a>标签选择器</h4><pre><code>&lt;style&gt;
+  h1 {font-size: 16px;}
+  p {color:red;}
+&lt;/style&gt;
+</code></pre><p>代码中的h1和p就是选择器，他们是选择器里面最常用的一种，叫做<strong>标签选择器</strong>。我们可以直接通过标签元素来指定需要添加样式的位置。<br><a id="more"></a><br>如果我们需要为多个标签添加同一种样式时，我们可以把它们组合在一起，每个标签选择器用“,”隔开，如下：</p>
+<pre><code>&lt;style&gt;
+  h1,h2,h3 {
+    font-weight: bold;
+    color: blue;
+  }
+&lt;/style&gt;
+</code></pre><p>这样的组合我们叫它<strong>分组选择器</strong>。</p>
+<h4 id="后代组合选择器"><a href="#后代组合选择器" class="headerlink" title="后代组合选择器"></a>后代组合选择器</h4><p>当我们想为下面的article和aside的段落文本分别设置不同的字号时，我们就可以用到后代选择器了，它们是在祖先元素和后代元素之间加了一个空格，如代码所示：</p>
+<pre><code>&lt;style&gt;
+  article p {
+    font-size: 12px;
+  }
+  aside p {
+    font-size: 14px;
+  }
+&lt;/style&gt;
+</code></pre><p>后代选择器有一个问题就是，祖先元素选择的后代元素都会带有样式，但是我们有时候并不需要所有的标签都带有样式，这个时候我们就要用到其他的选择器了。</p>
+<h4 id="子选择器"><a href="#子选择器" class="headerlink" title="子选择器"></a>子选择器</h4><p>我们可以用DOM中的父子元素关系来选择，也就是<strong>子选择器</strong>，两个元素中间用“&gt;”来连接，如代码所示：</p>
+<pre><code>&lt;style&gt;
+  article&gt;p {
+    font-size: 12px;
+  }
+&lt;/style&gt;
+</code></pre><h4 id="同胞选择器"><a href="#同胞选择器" class="headerlink" title="同胞选择器"></a>同胞选择器</h4><p>我们也可以通过同胞关系来选择，叫做<strong>同胞选择器</strong>或者是<strong>兄弟选择器</strong>，这就意味着选择器的标签元素需要具有同一个父元素，它们之间用“+”来连接，例子：</p>
+<pre><code>&lt;style&gt;
+  h2+p {
+    font-size: 12px;
+  }
+&lt;/style&gt;
+</code></pre><p>并且需要注意的是：p标签必须是紧跟在h2标签的后面。</p>
+<h4 id="一般同胞选择器"><a href="#一般同胞选择器" class="headerlink" title="一般同胞选择器"></a>一般同胞选择器</h4><p>一般同胞选择器中间用“~”连接。</p>
+<pre><code>&lt;style&gt;
+  h2~p {
+    font-size: 12px;
+  }
+&lt;/style&gt;
+</code></pre><p>一般同胞选择器和同胞选择器的区别就是，p标签不一定是紧跟在h2标签的后面。</p>
+<h4 id="通用选择器"><a href="#通用选择器" class="headerlink" title="通用选择器"></a>通用选择器</h4><p>通用选择器是使用通配符“ * ”，它可以匹配任何元素。比如：</p>
+<pre><code>*｛
+  color: green;
+｝
+</code></pre><p>它会导致所有文本和边框都变成绿色。这里有个小知识：</p>
+<p>color属性设定的是前景色。前景色既影响文本也影响边框，但通常我们只用它设定文本颜色。</p>
+<p>我们也可以这样使用通用选择器：</p>
+<pre><code>p* {
+  color: red;
+}
+</code></pre><p>这样只会把p包含的所有元素的文本变成红色。<br>通用选择器还有一个有意思的用法，就是可以用它构成一个非子选择器，比如：</p>
+<pre><code>section*a {
+  font-size: 1.3em;
+}
+</code></pre><p>代码所表示的是，所有section的孙子元素，而非子元素的a标签都会被选中。这个从逻辑上来说也好理解，左边的section代表通配符的父元素，右边的a代表通配符的子元素，而*就是所有中间元素的集合。</p>
+<p>以上就是通过DOM的层次结构的“上下文”关系来表示的选择器。</p>
+<h3 id="二、id和类选择器"><a href="#二、id和类选择器" class="headerlink" title="二、id和类选择器"></a>二、id和类选择器</h3><p>id和类选择器是我们在CSS中常用的选择器，它们可以更精确的定位到我们要添加样式的标签位置。只要在HTML标记中为元素添加id和class属性，就可以通过id和类选择器直接选择。</p>
+<p>可以给id和class属性设定任何值，但不能以数字或特殊符号开头。</p>
+<h4 id="类选择器"><a href="#类选择器" class="headerlink" title="类选择器"></a>类选择器</h4><p>body标签包含的任何HTML元素都可以添加class属性，如：</p>
+<pre><code>&lt;h1 class=&quot;specialtext&quot;&gt;这是一个H1标签&lt;/h1&gt;
+&lt;p&gt;这是一个段落。&lt;/p&gt;
+&lt;p class=&quot;specialtext featured&quot;&gt;这是另一个段落&lt;/p&gt;
+</code></pre><h5 id="1、类选择器"><a href="#1、类选择器" class="headerlink" title="1、类选择器"></a>1、类选择器</h5><p>然后我们就可以用类选择器添加样式了，类选择器前面要加一个“ . ” ，后面跟着类名，如下：</p>
+<pre><code>&lt;style&gt;
+  p {
+    font-family: helvetica,sans-serif;
+  }
+  .specialtext {
+    font-style: italic;
+  }
+&lt;/style&gt;
+</code></pre><h5 id="2、标签带类选择器"><a href="#2、标签带类选择器" class="headerlink" title="2、标签带类选择器"></a>2、标签带类选择器</h5><p>当然，需要更精确的也可以这样写：</p>
+<pre><code>&lt;style&gt;
+  p {
+    font-family: helvetica,sans-serif;
+  }
+  .specialtext {
+    font-style: italic;
+  }
+  p.specialtext {
+    color: red;
+  }
+  p.specialtext span{
+    font-weight: bold;
+  }
+&lt;/style&gt;
+</code></pre><p>第三个样式只选择带.specialtext类的p，第四就更精确到p中的span元素了。</p>
+<h5 id="3、多类选择器"><a href="#3、多类选择器" class="headerlink" title="3、多类选择器"></a>3、多类选择器</h5><p>同个标签可以存在多个类属性，每个类都用空格分隔，要选择两个类名可以这样写：</p>
+<pre><code>&lt;style&gt;
+  .specialtext.featured {
+    font-size: 120%;
+  }
+&lt;/style&gt;
+</code></pre><p><strong>注意：CSS类选择器的两个类名之间没有空格，如果加了空格就变成了“祖先/后代”关系的上下文选择器了。</strong></p>
+<h4 id="ID选择器"><a href="#ID选择器" class="headerlink" title="ID选择器"></a>ID选择器</h4><p>ID与类的写法相似，只不过id选择器前面用“ # ”后面跟着id名，</p>
+<pre><code>&lt;style&gt;
+  #specialtext {
+    font-style: italic;
+  }
+&lt;/style&gt;
+***
+***
+***
+&lt;p id=&quot;specialtext&quot;&gt;这是一个特殊段落&lt;/p&gt;
+</code></pre><p>id还可以用于页内导航</p>
+<pre><code>&lt;a href=&quot;#bio&quot;&gt;Biography&lt;/a&gt;
+</code></pre><p>这样的链接就可以直接在页面内跳转到具有id名为“bio”的标签的位置。如果没想好“href”中放什么链接，也可以用“#”来充当占位符。</p>
+<h4 id="什么时候用ID，什么时候用类"><a href="#什么时候用ID，什么时候用类" class="headerlink" title="什么时候用ID，什么时候用类"></a>什么时候用ID，什么时候用类</h4><h5 id="1、什么时候用id"><a href="#1、什么时候用id" class="headerlink" title="1、什么时候用id"></a>1、什么时候用id</h5><p>id的用途是在页面中唯一地标识一个元素，强调的是唯一性。每个id名称必须是不相同的，而且每个id名称在页面中只能用一次。尤其是于JavaScript关联时，相同的id可能会导致JS行为异常。</p>
+<h5 id="2、什么时候用类"><a href="#2、什么时候用类" class="headerlink" title="2、什么时候用类"></a>2、什么时候用类</h5><p>类的目的是为了标识一组具有相同样式特征的元素，强调的是通用性。切不可乱用类，这样会增加需要编写和维护的CSS量。</p>
+<h5 id="总结（来自知乎：Milo）"><a href="#总结（来自知乎：Milo）" class="headerlink" title="总结（来自知乎：Milo）"></a>总结（来自知乎：Milo）</h5><ul>
+<li><p>ID具有唯一性，Class具有普遍性。</p>
+</li>
+<li><p>ID是唯一的，所以尽量在结构外围使用，通常用于页面布局。</p>
+</li>
+<li><p>Class是可重复的，所以尽量在结构内部使用，通常用于样式定义。</p>
+</li>
+<li><p>ID的样式优先级高于Class。</p>
+</li>
+</ul>
+<h3 id="三、属性选择器"><a href="#三、属性选择器" class="headerlink" title="三、属性选择器"></a>三、属性选择器</h3><h4 id="属性名选择器"><a href="#属性名选择器" class="headerlink" title="属性名选择器"></a>属性名选择器</h4><p>我们可能会遇到这样的HTML代码：</p>
+<pre><code>&lt;img sec=&quot;images/yellow_flower.jpg&quot; title=&quot;yellow flower&quot; alt=&quot;yellow flower&quot; /&gt;
+</code></pre><p>如果我们想要为带有title属性的图片添加样式，那么我们就可以用到<strong>属性名选择器</strong>了，如下：</p>
+<pre><code>img[title] {
+  border: 2px solid blue;
+}
+</code></pre><p>这时，图片就会显示2像素宽的蓝色边框。一般来说title属性和alt属性都是设定相同的值，增加可阅读性。</p>
+<h4 id="属性值选择器"><a href="#属性值选择器" class="headerlink" title="属性值选择器"></a>属性值选择器</h4><p>属性值选择器就更精确地定位我们所需要添加样式的位置了。如下：</p>
+<pre><code>img[title=&quot;red flower&quot;] {
+  border: 4px solid green;
+}
+***
+***
+***
+&lt;img src=&quot;images/red_flower.jpg&quot; title=&quot;red flower&quot; alt=&quot;red flower&quot; /&gt;
+</code></pre><p>只有在title属性值为“red flower”时，才会为图片加上边框样式。</p>
+<h4 id="属性和值选择器-多个值"><a href="#属性和值选择器-多个值" class="headerlink" title="属性和值选择器-多个值"></a>属性和值选择器-多个值</h4><pre><code>[title~=&quot;hello&quot;]{
+  color: red;
+}
+</code></pre><p>该例子为包含指定值的title属性的所有元素设置样式,适用于由空格分隔的属性值。</p>
+<pre><code>[lang|=en] {
+  color: red;
+}
+</code></pre><p>该例子为带有包含指定值的lang属性的所有元素设置样式。适用于由连字符分隔的属性值。</p>
+<h4 id="设置表单样式"><a href="#设置表单样式" class="headerlink" title="设置表单样式"></a>设置表单样式</h4><pre><code>input[type=&quot;text&quot;]{
+  width: 50px;
+  display: block;
+}
+
+input[type=&quot;button&quot;]{
+  width:12opx;
+  margin-left:35px;
+}
+</code></pre><p>选择器参考手册</p>
+<p>[attribute] 用于选取带有指定属性的元素。</p>
+<p>[attribute=value] 用于选取带有指定属性和值的元素。</p>
+<p>[attribute~=value] 用于选取属性值中包含指定词汇的元素。</p>
+<p>[attribute|=value] 用于选取带有以指定值开头的属性值的元素，该值必须是整个单词。</p>
+<p>[attribute^=value] 匹配属性值以指定值开头的每个元素。</p>
+<p>[attribute$=value] 匹配属性值以指定值结尾的每个元素。</p>
+<p>[attribute*=value] 匹配属性值中包含指定值的每个元素。</p>
+<h3 id="四、伪类"><a href="#四、伪类" class="headerlink" title="四、伪类"></a>四、伪类</h3><p>伪类与类相似，但它并没有附加到标记中的标签上，所以称之为伪类，伪类分两种：</p>
+<ul>
+<li>UI伪类，会在html元素处于特定状态时，为该元素应用CSS样式。</li>
+<li>结构化伪类，会在标记中存在某种结构上的关系时，为相应的元素引用CSS样式。</li>
+</ul>
+<h4 id="UI伪类"><a href="#UI伪类" class="headerlink" title="UI伪类"></a>UI伪类</h4><h5 id="1、链接伪类"><a href="#1、链接伪类" class="headerlink" title="1、链接伪类"></a>1、链接伪类</h5><p>针对连接的伪类一共有四个，也是我们常用伪类，它们的顺序也始终是这样的：</p>
+<pre><code>a:Link {color: black;}            /*链接等待被点击*/
+a:visited {color: grey}           /*用户此前点击过此链接*/
+a:hover {text-decoration: none;}  /*鼠标悬停在这个链接上*/
+a:active {color:red;}             /*链接正在被点击（鼠标按下还没有释放）*/
+</code></pre><p><strong>一个冒号（:）表示伪类，两个冒号（::）表示CSS3新增的伪元素。</strong><br>很多时候不一定要将四个元素都写出来。而且这些伪类也可以用于任何元素，如下：</p>
+<pre><code>p:hover {background-color: grey;}
+</code></pre><p>这条代码就可以使鼠标悬停在p标签位置时，背景颜色变为灰色。</p>
+<h5 id="2、focus伪类"><a href="#2、focus伪类" class="headerlink" title="2、focus伪类"></a>2、focus伪类</h5><p>任何元素都可以运用focus伪类，但一般用于表单：</p>
+<pre><code>input：focus ｛background-color: yellow;｝
+</code></pre><p>表单中的文本框在用户单击它时会获取焦点，同时为该文本框添加一个黄色背景。</p>
+<h5 id="3、：target伪类"><a href="#3、：target伪类" class="headerlink" title="3、：target伪类"></a>3、：target伪类</h5><p>如果用户点击一个指向页面中其他元素的链接，则那个元素就是目标（target），可以用:target选中它。</p>
+<pre><code>&lt;style&gt;
+  #more_info:target {background:#eee;}
+&lt;/style&gt;
+
+&lt;a href=&quot;#more_info&quot;&gt;More Information&lt;/a&gt;
+
+&lt;h2 id=&quot;more_info&quot;&gt;This is the information you are looking for.&lt;/h2&gt;
+</code></pre><p>用户单击链接跳转id为more_info的元素时，为该元素添加浅灰色背景。<strong>维基百科在其引证中就大量地使用了:target伪类。</strong></p>
+<h4 id="结构化伪类"><a href="#结构化伪类" class="headerlink" title="结构化伪类"></a>结构化伪类</h4><h5 id="1、-first-child和-last-child"><a href="#1、-first-child和-last-child" class="headerlink" title="1、:first-child和:last-child"></a>1、:first-child和:last-child</h5><p>:first-child代表一组同胞元素中的第一个元素，而:last-child则代表最后一个。如下：</p>
+<pre><code>&lt;style&gt;
+  ol.results li:first-child {
+    color: blue;
+  }
+  ol.results li:last-child {
+    color: red;
+  }
+&lt;/style&gt;
+
+&lt;ol class=&quot;results&quot;&gt;
+  &lt;li&gt;MY FAST PONY&lt;/li&gt;
+  &lt;li&gt;STEADY TROTTER&lt;/li&gt;
+  &lt;li&gt;SLOW OL&apos;NAG&lt;/li&gt;
+&lt;/ol&gt;
+</code></pre><h5 id="2、nth-child-n"><a href="#2、nth-child-n" class="headerlink" title="2、nth-child(n)"></a>2、nth-child(n)</h5><p>n可以是表示一个数值（也可以使用odd或者even表示奇数和偶数，也可用2n+1或者2n来表示），例如：</p>
+<pre><code>li:nth-child(3) {color: grey;}
+</code></pre><p>:nth-child伪类最常用于提高表格的可读性，交替使用不同的颜色。</p>
+<p>还有<strong>伪元素</strong>,内容有点多，就不一一介绍了。<br>参考资料：《CSS设计指南》、<a href="http://www.w3school.com.cn/" target="_blank" rel="external">w3cschool</a></p>
+
+                
+<p class="pink-link-context">
+    <a href="/2018/01/27/js数组去重的几种方法/" rel="next" title="js数组去重的几种方法">
+    上一篇：js数组去重的几种方法
+  </a>
+</p>
+
+
+
+
+            </div>
+			
+        </div>
+    </div>
+</article>
+
+
+
+
+    <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href,
+        sourceId: "",
+        productKey: "true",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+
+
+
+</div>
+
+        <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+    </main>
+    <footer class="page-footer indigo darken-1">
+    
+    <div class="footer-container container">
+        <div class="row">
+            
+            <div class="social-group col m4 s12">
+                <h5 class="white-text">社交</h5>
+                
+                    <a class="social-link" href="http://weibo.com/2728545850" target="_blank">
+                        <i class="fa fa-2x fa-weibo"></i>
+                    </a>
+                
+                    <a class="social-link" href="https://github.com/pigiszhu" target="_blank">
+                        <i class="fa fa-2x fa-github"></i>
+                    </a>
+                
+                    <a class="social-link" href="/atom.xml" target="_blank">
+                        <i class="fa fa-2x fa-rss"></i>
+                    </a>
+                
+                
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    </script>
+    <div class="site-visitors-container white-text">
+        <span>
+            <i class="fa fa-user"></i>
+            <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+        </span>
+        <span>&nbsp;|&nbsp;</span>
+        <span>
+            <i class="fa fa-eye"></i>
+            <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+        </span>
+    </div>
+
+
+            </div>
+            
+
+            
+            <div class="col m8 s12">
+                <h5 class="white-text">友情链接</h5>
+                
+                    <a class="social-link" href="http://raytaylorlin.com/" target="_blank">raytaylorism主题作者的技术博客</a>
+                
+                    <a class="social-link" href="https://github.com" target="_blank">Github地址</a>
+                
+                    <a class="social-link" href="http://www.ruanyifeng.com" target="_blank">阮一峰个人博客</a>
+                
+                    <a class="social-link" href="http://www.cnblogs.com/TomXu/" target="_blank">汤姆大叔的博客</a>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+
+    <div class="footer-copyright pink-link-context">
+        <div class="container">
+            © 2016 xiaoli1992.cn, All rights reserved.
+            <p class="right" style="margin-top: 0;">本博客由 <a href="https://hexo.io">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a></p>
+        </div>
+    </div>
+</footer>
+
+
+    <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+            // 添加new标签
+            $('.menu-reading, .menu-about').append('<span class="new badge pink"></span>');
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" async
+  src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+</body>
+</html>
