@@ -7,13 +7,18 @@
 
     
 
-    <title>归档：2018/1 | Mr.X的博客</title>
+    <title>Git常用命令总结 | Mr.X的博客</title>
     <meta name="author" content="xiaoli">
+    
+    <meta name="description" content="对Git的命令总是不太清楚，在网上看了一些资料，然后总结也做个整理吧，写一遍，加深一下印象，不要总是看着去写，文章最后还有自己总结的Git命令思维导图一张。
+废话不多说，开始正文
+Git的一些基础命令一般配置git --version //查看git的版本信息
+git config --global">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    
+    <meta property="og:title" content="Git常用命令总结"/>
     <meta property="og:site_name" content="Mr.X"/>
 
     
@@ -279,52 +284,134 @@
 
     <main>
         <div class="container main-container">
-    
-
-<nav class="page-nav hide-on-small-only">
+    <nav class="page-nav hide-on-small-only">
     <div class="nav-wrapper indigo">
-        <span class="breadcrumb">当前位置（归档）</span>
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/Git/">Git</a>
+
+
         
 
         
     </div>
 </nav>
 
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>Git常用命令总结</h1>
+    
 
 
-    <ul class="collapsible mt-0" data-collapsible="accordion">
+            </div>
+            <time class="pink-link-context" datetime="2018-06-13T03:45:23.000Z"><a href="/2018/06/13/Git常用命令总结/">2018-06-13</a></time>
+
+            <span id="busuanzi_container_page_pv" class="read-times-container">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_value_page_pv"></span>
+</span>
+
+            
+    <div class="tags-row">
         
+            <a href="/tags/Git/" class="chip pink lighten-1">Git</a>
         
-            <li>
-                <div class="collapsible-header active">
-                    <i class="fa fa-archive"></i>2018
-                </div>
-                <div class="collapsible-body">
-                    <div class="collection">
-                        
-                            <a href="/2018/01/27/js数组去重的几种方法/" class="collection-item grey-text text-darken-1">
-                                <time datetime="2018-01-27T12:12:44.000Z">2018-01-27</time>
-                                <span>&nbsp;&nbsp;&nbsp;</span>
-                                js数组去重的几种方法
-                            </a>
-                        
-                            <a href="/2018/01/25/js数组的一些基本操作/" class="collection-item grey-text text-darken-1">
-                                <time datetime="2018-01-25T08:25:31.000Z">2018-01-25</time>
-                                <span>&nbsp;&nbsp;&nbsp;</span>
-                                js数组的一些基本操作
-                            </a>
-                        
-                            <a href="/2018/01/22/站在2018/" class="collection-item grey-text text-darken-1">
-                                <time datetime="2018-01-22T08:58:10.000Z">2018-01-22</time>
-                                <span>&nbsp;&nbsp;&nbsp;</span>
-                                站在2018
-                            </a>
-                        
-                    </div>
-                </div>
-            </li>
+            <a href="/tags/Github/" class="chip pink lighten-1">Github</a>
         
-    </ul>
+    </div>
+
+
+            <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#Git的一些基础命令"><span class="section table-of-contents-text">Git的一些基础命令</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#一般配置"><span class="section table-of-contents-text">一般配置</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#登录Git"><span class="section table-of-contents-text">登录Git</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#创建一个文件夹"><span class="section table-of-contents-text">创建一个文件夹</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#创建忽略文件"><span class="section table-of-contents-text">创建忽略文件</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#查看目录"><span class="section table-of-contents-text">查看目录</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#查看文件内容"><span class="section table-of-contents-text">查看文件内容</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#增加到暂缓区中"><span class="section table-of-contents-text">增加到暂缓区中</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#增加到版本库中"><span class="section table-of-contents-text">增加到版本库中</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#查看版本"><span class="section table-of-contents-text">查看版本</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#比较差异"><span class="section table-of-contents-text">比较差异</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#删除本地文件"><span class="section table-of-contents-text">删除本地文件</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#删除暂存区"><span class="section table-of-contents-text">删除暂存区</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#回滚版本"><span class="section table-of-contents-text">回滚版本</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#操作记录查询"><span class="section table-of-contents-text">操作记录查询</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#分支管理"><span class="section table-of-contents-text">分支管理</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#创建分支"><span class="section table-of-contents-text">创建分支</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#切换分支"><span class="section table-of-contents-text">切换分支</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#创建分支并切换分支"><span class="section table-of-contents-text">创建分支并切换分支</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#删除分支"><span class="section table-of-contents-text">删除分支</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#在分支上提交新的版本"><span class="section table-of-contents-text">在分支上提交新的版本</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#合并分支"><span class="section table-of-contents-text">合并分支</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#分支的合并后显示log"><span class="section table-of-contents-text">分支的合并后显示log</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#远程仓库"><span class="section table-of-contents-text">远程仓库</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#添加远程仓库"><span class="section table-of-contents-text">添加远程仓库</span></a></li></ol></li></ol>
+</div>
+
+
+            <div class="entry pink-link-context">
+                <p>对Git的命令总是不太清楚，在网上看了一些资料，然后总结也做个整理吧，写一遍，加深一下印象，不要总是看着去写，文章最后还有自己总结的Git命令思维导图一张。</p>
+<p>废话不多说，开始正文</p>
+<h3 id="Git的一些基础命令"><a href="#Git的一些基础命令" class="headerlink" title="Git的一些基础命令"></a>Git的一些基础命令</h3><h4 id="一般配置"><a href="#一般配置" class="headerlink" title="一般配置"></a>一般配置</h4><pre><code>git --version //查看git的版本信息
+git config --global user.name //获取当前登录的用户
+git config --global user.email //获取当前登录用户的邮箱
+git config --list //列出所有git当时能找到的配置
+</code></pre><h4 id="登录Git"><a href="#登录Git" class="headerlink" title="登录Git"></a>登录Git</h4><pre><code>/*如果刚没有获取到用户配置，则只能拉取2代码，不能修改。要是使用git,你要告诉git是谁在使用*/
+git config --global user.name &apos;userName&apos; //设置git账户，userName为你的git账号
+git config --global user.email &apos;email&apos;
+</code></pre><h4 id="创建一个文件夹"><a href="#创建一个文件夹" class="headerlink" title="创建一个文件夹"></a>创建一个文件夹</h4><pre><code>mkdir nodejs //创建文件夹nodejs
+cd nodejs //切换到nodejs目录下
+</code></pre><h4 id="创建忽略文件"><a href="#创建忽略文件" class="headerlink" title="创建忽略文件"></a>创建忽略文件</h4><pre><code>touch .gitignore //不需要服务器端提交的内容写到忽略文件里
+</code></pre><h4 id="查看目录"><a href="#查看目录" class="headerlink" title="查看目录"></a>查看目录</h4><pre><code>ls -al
+</code></pre><h4 id="查看文件内容"><a href="#查看文件内容" class="headerlink" title="查看文件内容"></a>查看文件内容</h4><pre><code>cat index.html
+</code></pre><h4 id="增加到暂缓区中"><a href="#增加到暂缓区中" class="headerlink" title="增加到暂缓区中"></a>增加到暂缓区中</h4><pre><code>git add index.html
+git add -A //全部添加到缓存区
+</code></pre><h4 id="增加到版本库中"><a href="#增加到版本库中" class="headerlink" title="增加到版本库中"></a>增加到版本库中</h4><pre><code>git commit -m &apos;备注信息&apos;
+</code></pre><h4 id="查看版本"><a href="#查看版本" class="headerlink" title="查看版本"></a>查看版本</h4><pre><code>git log --oneline
+</code></pre><h4 id="比较差异"><a href="#比较差异" class="headerlink" title="比较差异"></a>比较差异</h4><pre><code>git diff //比较的是暂存区和工作区的差异
+git diff --cached //比较的是暂存区和历史区的差异
+git diff master //比较的是历史区和工作区的差异（修改）
+git checkout idnex.html //用暂存区中的内容或者版本库中的内容覆盖掉工作区
+git reset HEAD index.html //取消增加到暂存区的内容（添加时）
+git status //显示目录的状态，有没有添加或者修改文件
+</code></pre><h4 id="删除本地文件"><a href="#删除本地文件" class="headerlink" title="删除本地文件"></a>删除本地文件</h4><pre><code>rm fileName
+</code></pre><h4 id="删除暂存区"><a href="#删除暂存区" class="headerlink" title="删除暂存区"></a>删除暂存区</h4><pre><code>git rm index.html --cached //保证当前工作区中index.html
+使用--cached表示只删除缓存区中的内容
+</code></pre><h4 id="回滚版本"><a href="#回滚版本" class="headerlink" title="回滚版本"></a>回滚版本</h4><pre><code>git reset --hard HEAD/commit_id //回滚最近的一个版本
+</code></pre><h4 id="操作记录查询"><a href="#操作记录查询" class="headerlink" title="操作记录查询"></a>操作记录查询</h4><pre><code>/*可以查看所有分支的操作记录（包括commit和reset的操作），包括已经被删除的commit记录，gitlog则不能察看已经删除了的commit记录*/
+git reflog
+</code></pre><h3 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h3><h4 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h4><pre><code>git branch dev
+</code></pre><h4 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h4><pre><code>git checkout dev
+</code></pre><h4 id="创建分支并切换分支"><a href="#创建分支并切换分支" class="headerlink" title="创建分支并切换分支"></a>创建分支并切换分支</h4><pre><code>git checkout -b dev
+</code></pre><h4 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h4><pre><code>git branch -d dev
+</code></pre><h4 id="在分支上提交新的版本"><a href="#在分支上提交新的版本" class="headerlink" title="在分支上提交新的版本"></a>在分支上提交新的版本</h4><pre><code>git commit -a -m &apos;dev1&apos;
+</code></pre><h4 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h4><pre><code>git merge dev
+</code></pre><h4 id="分支的合并后显示log"><a href="#分支的合并后显示log" class="headerlink" title="分支的合并后显示log"></a>分支的合并后显示log</h4><pre><code>git log --oneline --graph --decorate
+</code></pre><h3 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h3><h4 id="添加远程仓库"><a href="#添加远程仓库" class="headerlink" title="添加远程仓库"></a>添加远程仓库</h4><pre><code>git remote add origin &lt;repo&gt; //添加远程仓库
+git push -u origin master //添加本地master分支到远程仓库origin的master分支
+git push -u origin master --force //强制推送本地的master分支到远程仓库origin的master支付，会覆盖远程
+git pull //取回远程主机某个分支的更新，再与本地的指定分支合并
+git clone &lt;reponame&gt; //克隆远程仓库到本地
+git remote remove origin //删除本地与远程的关联
+git remote -v 查询绑定的远程仓库
+</code></pre><p>现在常用的就是这些了，get!</p>
+
+                
+<p class="pink-link-context">
+    <a href="/2018/04/27/注释那些事儿/" rel="next" title="注释那些事儿">
+    上一篇：注释那些事儿
+  </a>
+</p>
+
+
+
+
+            </div>
+			
+        </div>
+    </div>
+</article>
+
+
+
+
+    <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href,
+        sourceId: "",
+        productKey: "true",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+
 
 
 </div>
