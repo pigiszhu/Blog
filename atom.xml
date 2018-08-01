@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.xiaoli1992.cn/"/>
-  <updated>2018-06-13T10:14:24.925Z</updated>
+  <updated>2018-08-01T08:44:00.532Z</updated>
   <id>http://www.xiaoli1992.cn/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux下*.tar.gz文件解压缩命令</title>
+    <link href="http://www.xiaoli1992.cn/2018/08/01/Linux%E4%B8%8B-tar-gz%E6%96%87%E4%BB%B6%E8%A7%A3%E5%8E%8B%E7%BC%A9%E5%91%BD%E4%BB%A4/"/>
+    <id>http://www.xiaoli1992.cn/2018/08/01/Linux下-tar-gz文件解压缩命令/</id>
+    <published>2018-08-01T06:54:04.000Z</published>
+    <updated>2018-08-01T08:44:00.532Z</updated>
+    
+    <content type="html"><![CDATA[<p>写这篇博客的背后有个小故事的，<br>前两天我们的开发环境一直处于挂起状态，找了好久都没能找到问题，后来是技术主管出马，终于找到了问题的根源。然后我一看，确实是开发环境有个文件夹没有了！（谁误删的站出来！！！）<br><a id="more"></a><br>没办啦，我只好让运维人员帮忙打生产包，把这个文件下的所有东西从正式环境copy下路咯，然后我手动解压了*.tar.gz的压缩包，然后放到了开发环境的对应路径下，看我这么操作的技术主管在一旁笑了，笑了。。。<br>我老脸一红，说为了快点恢复开发环境只好这样了，而且作为一个前端没有接触过这些东西嘛。<br>所以，有了这么一篇关于Linux命令的笔记</p><p>—–漂亮的分隔线，开始正文—–</p><h4 id="压缩命令"><a href="#压缩命令" class="headerlink" title="压缩命令"></a>压缩命令</h4><pre><code>命令格式：tar -zcvf 压缩文件名.tar.gz 被压缩文件名</code></pre><p>可先切换到当前目录下，压缩文件名和被压缩文件名都可以加入路径。</p><h4 id="解压缩命令"><a href="#解压缩命令" class="headerlink" title="解压缩命令"></a>解压缩命令</h4><pre><code>命令格式：tar -zxvf 压缩文件名.tar.gz</code></pre><p>解压缩后的文件只能放在当前的目录</p><p>具体的tar.gz的解压缩就是这样子，但是对于这些字符是什么意思我还是不晓得的，知其然更要知其所以然，才能记得住。</p><hr><h4 id="压缩说明"><a href="#压缩说明" class="headerlink" title="压缩说明"></a>压缩说明</h4><p>命令：tar -zcvf 压缩文件名.tar.gz</p><pre><code>选项：-z:解压缩类型为 .tar.gz-c:打包（建立压缩档案）-v:显示过程-f:指定打包后的文件名</code></pre><p>其实.tar.gz格式是先打包成.tar再压缩成.tar.gz</p><h4 id="解压说明"><a href="#解压说明" class="headerlink" title="解压说明"></a>解压说明</h4><p>命令：tar -zxvf 压缩文件名.tar.gz</p><pre><code>选项：-z:解压缩类型为.tar.gz-x:解压-v:显示过程-f:指定打包后的文件名</code></pre><p>目前能用到的的就这个了，其他的先不说。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;写这篇博客的背后有个小故事的，&lt;br&gt;前两天我们的开发环境一直处于挂起状态，找了好久都没能找到问题，后来是技术主管出马，终于找到了问题的根源。然后我一看，确实是开发环境有个文件夹没有了！（谁误删的站出来！！！）&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://www.xiaoli1992.cn/categories/Linux/"/>
+    
+    
+      <category term="Linux命令" scheme="http://www.xiaoli1992.cn/tags/Linux%E5%91%BD%E4%BB%A4/"/>
+    
+  </entry>
   
   <entry>
     <title>Git常用命令总结</title>
